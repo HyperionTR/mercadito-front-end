@@ -28,27 +28,27 @@ export class ApiService {
     return this.http.post(url, body, { observe: 'response' }) // Observa la respuesta completa
       .pipe(
         map((response: HttpResponse<any>) => {
-          if (response.headers.has('Set-Cookie')) {
-            const cookie = response.headers.get('Set-Cookie');
-            if (cookie) {
-              // Divide la cadena de la cookie en partes para obtener el nombre y el valor
-              const cookieParts = cookie.split(';');
-              const cookieNameValue = cookieParts[0].split('=');
-              const cookieName = cookieNameValue[0];
-              const cookieValue = cookieNameValue[1];
+          // if (response.headers.has('Set-Cookie')) {
+          //   const cookie = response.headers.get('Set-Cookie');
+          //   if (cookie) {
+          //     // Divide la cadena de la cookie en partes para obtener el nombre y el valor
+          //     const cookieParts = cookie.split(';');
+          //     const cookieNameValue = cookieParts[0].split('=');
+          //     const cookieName = cookieNameValue[0];
+          //     const cookieValue = cookieNameValue[1];
           
-              // Crea un nuevo objeto de cookie con el dominio y la ruta
-              const cookieObject = {
-                [cookieName]: cookieValue,
-                domain: '.mercadito-app.azurewebsites.net', // Dominio de tu API (incluye el punto inicial para cookies de subdominio)
-                path: '/', // Ruta de la cookie (normalmente "/")
-                // Puedes agregar otras opciones de cookie aquí, como 'secure' o 'expires'
-              };
+          //     // Crea un nuevo objeto de cookie con el dominio y la ruta
+          //     const cookieObject = {
+          //       [cookieName]: cookieValue,
+          //       domain: '.azurewebsites.net', // Dominio de tu API (incluye el punto inicial para cookies de subdominio)
+          //       path: '/', // Ruta de la cookie (normalmente "/")
+          //       // Puedes agregar otras opciones de cookie aquí, como 'secure' o 'expires'
+          //     };
           
-              // Convierte el objeto de cookie a una cadena y almacénalo
-              document.cookie = Object.entries(cookieObject).map(([key, value]) => `${key}=${value}`).join('; ');
-            }
-          }
+          //     // Convierte el objeto de cookie a una cadena y almacénalo
+          //     document.cookie = Object.entries(cookieObject).map(([key, value]) => `${key}=${value}`).join('; ');
+          //   }
+          // }
           return response.body;
         })
       );
