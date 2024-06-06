@@ -1,10 +1,14 @@
 {
   "configVersion": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "timestamp": 1717639522681,
 =======
   "timestamp": 1717630326600,
 >>>>>>> 9564c8dd (version estable con github actions)
+=======
+  "timestamp": 1717636380111,
+>>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
   "index": "/index.html",
   "assetGroups": [
     {
@@ -175,9 +179,15 @@
         "/assets/icons/icon-96x96.png",
         "/assets/images/Mapa etiquetado2_3.jpg",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "/assets/routes.json",
 =======
 >>>>>>> 9564c8dd (version estable con github actions)
+=======
+=======
+        "/assets/routes.json",
+>>>>>>> 88baeb4b (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
+>>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
         "/assets/shapes.svg"
       ],
       "patterns": []
@@ -315,15 +325,24 @@
     "/assets/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
     "/assets/images/Mapa etiquetado2_3.jpg": "7de9c5801a0def91f45381c6adbd914177bb62df",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "/assets/routes.json": "aa7d52848cc72061423772385c8a37f4d9540682",
     "/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
     "/common.5fc7a1036c8e743e.js": "20d7d247d42539ca4415f62c71bad2be1800fe0a",
     "/index.html": "bcbe9a7254726fedb3a313c3fa4d420b502773bc",
     "/main.662e8e4c84f9157a.js": "cbdea45dcf834ff0b78129bb7a10bed23d9797a6",
 =======
+=======
+>>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
     "/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
     "/common.9e11136af58e1c5e.js": "82603d69d9b437dd45c8f755b337e81284c312ab",
     "/index.html": "a9727f74404c346ef5bc9dc5e8c2f972d1ad8cfd",
+=======
+    "/assets/routes.json": "aa7d52848cc72061423772385c8a37f4d9540682",
+    "/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
+    "/common.9e11136af58e1c5e.js": "82603d69d9b437dd45c8f755b337e81284c312ab",
+    "/index.html": "20ded8c523fc4e699e3d5ca15f5bb45f89ed5cbb",
+>>>>>>> 88baeb4b (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
     "/main.b4d27fa9658dedc6.js": "06daea3cc087119929da49175a296eb706c24175",
 >>>>>>> 9564c8dd (version estable con github actions)
     "/manifest.webmanifest": "9a088b7c4339228d1082e666ce105dc889bc180c",
