@@ -1,0 +1,41 @@
+<ion-content color="light" class="ion-padding">
+  <br>
+       <ion-icon size="large" name="arrow-back" routerLink="/"></ion-icon>
+   <br>
+       <h2 size="large"><b>Registrarse</b></h2>
+
+  <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label type="text" position="stacked">Nombre*</ion-label>
+      <ion-input type="text" ngModel name="usuario" required></ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label position="stacked">Boleta*</ion-label>
+      <ion-input type="text" ngModel name="boleta" required></ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label position="stacked">Correo electrónico*</ion-label>
+      <ion-input type="email" ngModel name="email" required></ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label position="stacked">Contraseña*</ion-label>
+      <ion-input type="password" ngModel name="password" required></ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label position="stacked">Confirmar contraseña*</ion-label>
+      <ion-input type="password" ngModel name="password_conf" required></ion-input>
+    </ion-item>
+
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label position="stacked">Tipo de cuenta</ion-label>
+      <ion-toggle [(ngModel)]="tipo_usuario" name="tipo_usuario" (ionChange)="updateTipoLabel()"></ion-toggle>
+      <ion-label id="tipo_label">Comprador</ion-label>
+    </ion-item>
+
+    <br>
+    <ion-button color="dark" shape="round" expand="block" type="submit" [disabled]="!registerForm.valid">
+      Registrar &nbsp;<ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+  </form>
+    </ion-content>
+ 

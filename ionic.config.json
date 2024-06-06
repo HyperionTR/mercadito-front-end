@@ -1,0 +1,7 @@
+{
+  "name": "yupi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

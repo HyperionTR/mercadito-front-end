@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mi carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><i class="fa-solid fa-arrow-left" routerLink="/tabs/home"></i> Mi carrito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngIf="cartProducts.length === 0" class="ion-text-center">
+    <p>Tu carrito esta vacio agrega productos</p>
+    <ion-button color="dark" shape="round" routerLink="/tabs/home">Productos</ion-button>
+</div>
+
+  <ion-card class="ion-padding" *ngFor="let product of cartProducts; let i = index">
+    <ion-item class="no-lines">
+      <ion-thumbnail slot="start">
+        <img [src]="(product.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + product.imagen) : 'https://via.placeholder.com/150')" alt="Product Image"/>
+      </ion-thumbnail>
+      <ion-icon color="danger" aria-hidden="true" name="trash" slot="end" (click)="removeProduct(i)"></ion-icon>
+      <ion-note color="dark">
+        <p>{{ product.nombre }}</p>
+        <b>${{ product.precio }}</b>
+      </ion-note>
+    </ion-item>
+  </ion-card>
+</ion-content>
+
+<ion-footer *ngIf="cartProducts.length > 0">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <p style="font-size: 12px; margin-left: 10px;">Total</p>
+        <p style="font-size: 16px; margin-left: 10px; margin-top: -10px;"><b>${{ total | number:'1.2-2' }}</b></p>
+      </ion-col>
+      <ion-col class="ion-text-end">
+        <ion-button style="margin-top: 15px;" shape="round" color="dark" (click)="openDeliveryPage()">Continuar <i class="fa-solid fa-angle-right"></i></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Más</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Más</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <ion-segment value="seg1">
+      <ion-segment-button value="seg1">
+        <ion-label>Mis compras</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="seg2">
+        <ion-label>Mi inventario</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="seg3">
+        <ion-label>Mis ventas</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="ion-text-center">
+    <p>Aun no tienes compras</p>
+  </div>
+  
+</ion-content>

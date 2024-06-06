@@ -1,0 +1,21 @@
+<ion-content color="light" class="ion-padding">
+ <br>
+      <ion-icon size="large" name="arrow-back" routerLink="/"></ion-icon>
+  <br>
+      <h2 size="large"><b>Iniciar sesión</b></h2>
+
+  <form (ngSubmit)="onLogin()">
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label position="stacked">Boleta*</ion-label>
+      <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
+    </ion-item>
+    <ion-item color="light" class="ion-no-padding">
+      <ion-label position="stacked">Contraseña*</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+    </ion-item>
+    <br>
+    <ion-button color="dark" shape="round" expand="block" type="submit">
+      Iniciar sesion &nbsp;<ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+  </form>
+</ion-content>

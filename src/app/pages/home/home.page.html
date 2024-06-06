@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="dark" *ngIf="!isLoggedIn">
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col size="5">¡Se parte de la comunidad!</ion-col>
+        <ion-col size="3"><ion-button size="small" color="light" shape="round" routerLink="/register">Registrarse</ion-button></ion-col>
+        <ion-col size="4"><ion-button size="small" color="light" shape="round" routerLink="/login">Iniciar sesión</ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  
+  <ion-toolbar color="light" *ngIf="isLoggedIn">
+    <p style="margin-left: 10px;">¡Bienvenido!</p>
+    <p style="font-size: 16px; margin-left: 10px; margin-top: -10px;"> <b>{{ currentUser.nombre_de_usuario }}</b> </p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar 
+    [(ngModel)]="searchTerm" 
+    (ionChange)="onSearchChange()"
+    placeholder="Buscar productos">
+  </ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let product of products" size="6">
+        <img width="100%" [src]="(product.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + product.imagen) : 'https://via.placeholder.com/150')" alt="Product Image" [routerLink]="['/tabs/product-details', product.id_producto]">
+        <p style="font-size: 16px; margin-top: 0px;"> {{ product.nombre }} </p>
+        <p style="margin-top: -30px;"><br> <b>{{ product.precio }}</b> <br> por {{ product.nombre_de_usuario }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
