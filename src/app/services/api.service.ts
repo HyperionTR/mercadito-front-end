@@ -30,6 +30,7 @@ export class ApiService {
     const body = { boleta: username, password: password };
     return this.http.post(url, body, { observe: 'response', withCredentials: true }) // withCredentials: true para enviar cookies
       .pipe(
+<<<<<<< HEAD
         map((response: HttpResponse<any>) => response.body),
         catchError(async error => {
           console.error('Error en el inicio de sesión:', error);
@@ -43,6 +44,31 @@ export class ApiService {
           toast.present()
 
           return throwError(() => new Error(error)); // Propaga el error para manejarlo en el componente
+=======
+        map((response: HttpResponse<any>) => {
+          // if (response.headers.has('Set-Cookie')) {
+          //   const cookie = response.headers.get('Set-Cookie');
+          //   if (cookie) {
+          //     // Divide la cadena de la cookie en partes para obtener el nombre y el valor
+          //     const cookieParts = cookie.split(';');
+          //     const cookieNameValue = cookieParts[0].split('=');
+          //     const cookieName = cookieNameValue[0];
+          //     const cookieValue = cookieNameValue[1];
+          
+          //     // Crea un nuevo objeto de cookie con el dominio y la ruta
+          //     const cookieObject = {
+          //       [cookieName]: cookieValue,
+          //       domain: '.azurewebsites.net', // Dominio de tu API (incluye el punto inicial para cookies de subdominio)
+          //       path: '/', // Ruta de la cookie (normalmente "/")
+          //       // Puedes agregar otras opciones de cookie aquí, como 'secure' o 'expires'
+          //     };
+          
+          //     // Convierte el objeto de cookie a una cadena y almacénalo
+          //     document.cookie = Object.entries(cookieObject).map(([key, value]) => `${key}=${value}`).join('; ');
+          //   }
+          // }
+          return response.body;
+>>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
         })
       );
   }

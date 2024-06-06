@@ -2,6 +2,7 @@
   "configVersion": 1,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   "timestamp": 1717639522681,
 =======
   "timestamp": 1717630326600,
@@ -9,6 +10,9 @@
 =======
   "timestamp": 1717636380111,
 >>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
+=======
+  "timestamp": 1717637047145,
+>>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
   "index": "/index.html",
   "assetGroups": [
     {
@@ -119,11 +123,15 @@
         "/964.624d3f72135724f0.js",
         "/9977.948bf38bed890db4.js",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "/common.5fc7a1036c8e743e.js",
         "/index.html",
         "/main.662e8e4c84f9157a.js",
 =======
         "/common.9e11136af58e1c5e.js",
+=======
+        "/common.819121153eb80d42.js",
+>>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
         "/index.html",
         "/main.b4d27fa9658dedc6.js",
 >>>>>>> 9564c8dd (version estable con github actions)
@@ -132,10 +140,14 @@
         "/polyfills-dom.bf542500b6fca113.js",
         "/polyfills.e9ea84778c1ce49f.js",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "/runtime.496a06c485b7ce17.js",
 =======
         "/runtime.20f17c93d4f30c2a.js",
 >>>>>>> 9564c8dd (version estable con github actions)
+=======
+        "/runtime.4e23f03398bce83a.js",
+>>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
         "/styles.602e1a294d0ac81d.css"
       ],
       "patterns": []
@@ -180,6 +192,7 @@
         "/assets/images/Mapa etiquetado2_3.jpg",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "/assets/routes.json",
 =======
 >>>>>>> 9564c8dd (version estable con github actions)
@@ -188,6 +201,9 @@
         "/assets/routes.json",
 >>>>>>> 88baeb4b (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
 >>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
+=======
+        "/assets/routes.json",
+>>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
         "/assets/shapes.svg"
       ],
       "patterns": []
@@ -340,9 +356,14 @@
 =======
     "/assets/routes.json": "aa7d52848cc72061423772385c8a37f4d9540682",
     "/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
+<<<<<<< HEAD
     "/common.9e11136af58e1c5e.js": "82603d69d9b437dd45c8f755b337e81284c312ab",
     "/index.html": "20ded8c523fc4e699e3d5ca15f5bb45f89ed5cbb",
 >>>>>>> 88baeb4b (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
+=======
+    "/common.819121153eb80d42.js": "24267866081348c8489102ed8e2e738a23014457",
+    "/index.html": "983aa3bbb821b3abac35d4314d3d36e847fb49b4",
+>>>>>>> 3ad1a422 (Quitada la parte de gestionar 'manualmente' las cookies)
     "/main.b4d27fa9658dedc6.js": "06daea3cc087119929da49175a296eb706c24175",
 >>>>>>> 9564c8dd (version estable con github actions)
     "/manifest.webmanifest": "9a088b7c4339228d1082e666ce105dc889bc180c",
@@ -350,10 +371,14 @@
     "/polyfills-dom.bf542500b6fca113.js": "3fa333db66c8050f12e99d977f5098a6de8dd593",
     "/polyfills.e9ea84778c1ce49f.js": "9f600af15369792882c19b11011740238690dd5e",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "/runtime.496a06c485b7ce17.js": "71c4d3bb037a0b05e36cfd282999047ac0f6eeff",
 =======
     "/runtime.20f17c93d4f30c2a.js": "4600642cf16552b9ee900fa263ed392ff362c160",
 >>>>>>> 9564c8dd (version estable con github actions)
+=======
+    "/runtime.4e23f03398bce83a.js": "fd7e98675099ad17b1cbda40d48272464ebb0e14",
+>>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
     "/styles.602e1a294d0ac81d.css": "a1de47d6817cfde0e619d8f441ab7120a12484d4"
   },
   "navigationUrls": [
