@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { ToastController } from '@ionic/angular'; // Asegúrate de tener ToastController importado
+import { Router } from '@angular/router';
+
 
 
 
@@ -10,7 +13,7 @@ import { map } from 'rxjs/operators';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastController: ToastController, private router:Router) { }
 
   private getHeaders(): HttpHeaders {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
@@ -25,31 +28,21 @@ export class ApiService {
   login(username: string, password: string): Observable<any> {
     const url = 'https://mercadito-app.azurewebsites.net/login';
     const body = { boleta: username, password: password };
-    return this.http.post(url, body, { observe: 'response' }) // Observa la respuesta completa
+    return this.http.post(url, body, { observe: 'response', withCredentials: true }) // withCredentials: true para enviar cookies
       .pipe(
-        map((response: HttpResponse<any>) => {
-          // if (response.headers.has('Set-Cookie')) {
-          //   const cookie = response.headers.get('Set-Cookie');
-          //   if (cookie) {
-          //     // Divide la cadena de la cookie en partes para obtener el nombre y el valor
-          //     const cookieParts = cookie.split(';');
-          //     const cookieNameValue = cookieParts[0].split('=');
-          //     const cookieName = cookieNameValue[0];
-          //     const cookieValue = cookieNameValue[1];
-          
-          //     // Crea un nuevo objeto de cookie con el dominio y la ruta
-          //     const cookieObject = {
-          //       [cookieName]: cookieValue,
-          //       domain: '.azurewebsites.net', // Dominio de tu API (incluye el punto inicial para cookies de subdominio)
-          //       path: '/', // Ruta de la cookie (normalmente "/")
-          //       // Puedes agregar otras opciones de cookie aquí, como 'secure' o 'expires'
-          //     };
-          
-          //     // Convierte el objeto de cookie a una cadena y almacénalo
-          //     document.cookie = Object.entries(cookieObject).map(([key, value]) => `${key}=${value}`).join('; ');
-          //   }
-          // }
-          return response.body;
+        map((response: HttpResponse<any>) => response.body),
+        catchError(async error => {
+          console.error('Error en el inicio de sesión:', error);
+
+          // Muestra el mensaje de error en un toast
+          const toast = await this.toastController.create({
+            message: error.error,
+            duration: 2000,
+            position: 'top'
+          });
+          toast.present()
+
+          return throwError(() => new Error(error)); // Propaga el error para manejarlo en el componente
         })
       );
   }
@@ -60,6 +53,24 @@ export class ApiService {
       .pipe(
         map((response: HttpResponse<string>) => {
           return response.body || '';
+        })
+      );
+  }
+
+  verifySession(): Observable<any> {
+    const url = 'https://mercadito-app.azurewebsites.net/login/verify';
+    return this.http.get(url, { withCredentials: true }) // withCredentials: true para enviar cookies
+      .pipe(
+        map((response: any) => response),
+        catchError(error => {
+          if (error.status === 401) {
+            // Si no está autenticado, redirigir a la página de inicio de sesión
+            this.router.navigate(['/login']); // Redirige al login en caso de error 401
+            return of(null);
+          } else {
+            console.error('Error al verificar la sesión:', error);
+            return throwError(() => new Error(error));
+          }
         })
       );
   }

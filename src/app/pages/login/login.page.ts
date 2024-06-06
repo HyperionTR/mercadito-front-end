@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -31,11 +33,13 @@ export class LoginPage implements OnInit {
         }
         this.router.navigate(['/']);
       },
-      (error) => {
-        // Manejar errores (por ejemplo, mostrar un mensaje de error)
-        console.error('Error al iniciar sesión:', error);
-      }
-    );
+      (error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.router.navigate(['/login']); // Redirige al login en caso de error 401
+        } else {
+          console.error('Error al iniciar sesión:', error);
+        }
+      });
   }
 
 }
