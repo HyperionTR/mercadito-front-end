@@ -1,22 +1,6 @@
 {
   "configVersion": 1,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "timestamp": 1717639522681,
-=======
-  "timestamp": 1717630326600,
->>>>>>> 9564c8dd (version estable con github actions)
-=======
-  "timestamp": 1717636380111,
->>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
-=======
-  "timestamp": 1717637047145,
->>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
-=======
-  "timestamp": 1718109082113,
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
+  "timestamp": 1718110691357,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -29,37 +13,10 @@
       "urls": [
         "/1049.a036db6fa8985f40.js",
         "/1102.7bab00f639615f6e.js",
-<<<<<<< HEAD
-        "/1293.edd386430352426a.js",
-        "/1459.32c41a59c0fd4cf1.js",
-        "/1577.7c2099b4ba92b3ae.js",
-<<<<<<< HEAD
-        "/2069.8ab462323c9539c4.js",
-=======
-        "/2069.b2ce047d798504b1.js",
->>>>>>> 9564c8dd (version estable con github actions)
-        "/2075.1971ba880d06cc30.js",
-        "/2144.5d46fa3641b801f2.js",
-        "/2348.c1eab30cfa33ad35.js",
-        "/2375.efb0d99d1467ed67.js",
-        "/2415.f0344460e8621e2e.js",
-        "/2560.f635aa3da047e885.js",
-        "/2885.d64fa10bd441cbc8.js",
-        "/3162.14f7765befef2a0d.js",
-        "/3506.ffc8d43656af6973.js",
-        "/3511.16739e7034875331.js",
-        "/3814.b141b720f428f531.js",
-<<<<<<< HEAD
-        "/3825.31a93f594403fe09.js",
-=======
-        "/3825.71af6fa8119fff8c.js",
->>>>>>> 9564c8dd (version estable con github actions)
-        "/4171.f5bc55c1acb0f5c1.js",
-=======
         "/1293.19d706934eb20a5d.js",
         "/1459.08a8ae40030552ec.js",
         "/1577.a2ba8b0ad9e3eecb.js",
-        "/2069.525e9b7e8b08f9f6.js",
+        "/2069.216677237240c513.js",
         "/2075.1971ba880d06cc30.js",
         "/2144.5d46fa3641b801f2.js",
         "/2348.12b471577685ffbe.js",
@@ -71,152 +28,62 @@
         "/3506.6b1b9ae7f0a5340d.js",
         "/3511.35af67cc0e7955b6.js",
         "/3814.0adb25562e15fea8.js",
-        "/3825.71af6fa8119fff8c.js",
+        "/3825.31a93f594403fe09.js",
         "/4171.54a30c9be0b3f467.js",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
         "/4183.0d54a4cc8cbc3a61.js",
         "/4406.9f4eb0b136e216ca.js",
         "/441.7365b092a9748a15.js",
         "/4463.a43f09ab005f11a6.js",
         "/4591.29bcefb22870f99e.js",
         "/4699.01733b3942afbe92.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "/4757.cf52f2caf6c78a22.js",
-=======
-        "/4757.e44ea60c2360ef76.js",
->>>>>>> 9564c8dd (version estable con github actions)
-        "/4867.851bcd293dfbb40e.js",
-=======
-        "/4757.2506f875d7a9ff27.js",
+        "/4757.49d5b4b585a5863f.js",
         "/4867.d9a2e792adf7549f.js",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
         "/5100.659224ed1f94442c.js",
         "/5197.46c9af489394a780.js",
         "/5222.299c437fefac03d3.js",
-<<<<<<< HEAD
-        "/5712.a9a2db8da6f1a8cd.js",
-        "/5887.a5c18b8dbe242146.js",
-        "/5949.03cac52022f7f5dc.js",
-        "/6024.3c02ab7fe82fedfe.js",
-<<<<<<< HEAD
-        "/6219.cf429c0cdda0bd72.js",
-        "/6433.d898f13c578268e4.js",
-        "/6521.05db202d43d78abb.js",
-        "/6688.a541df42882565e6.js",
-=======
-        "/6219.b2fca1fed8b507ce.js",
-        "/6433.d898f13c578268e4.js",
-        "/6521.05db202d43d78abb.js",
-=======
         "/5712.058b7e586f20f38b.js",
         "/5887.77da27d6b391fa0b.js",
         "/5949.2ed93c457aa1e9fb.js",
         "/6024.d1b99c205cc7f6eb.js",
         "/6433.4c4649e12b453cce.js",
         "/6521.334bc4997f6d6596.js",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
-        "/6688.a8e17ef9d7fd83f3.js",
->>>>>>> 9564c8dd (version estable con github actions)
+        "/6688.a541df42882565e6.js",
         "/6840.07e289ded493ad85.js",
         "/7030.1d75b716307e84d3.js",
         "/7076.1bbe7232f33c0234.js",
         "/7179.80391eb100990080.js",
         "/7240.680a87741a5535b1.js",
-<<<<<<< HEAD
         "/7339.ebc02007e82f5f0a.js",
-=======
-        "/7339.48cee305c79a9048.js",
->>>>>>> 9564c8dd (version estable con github actions)
         "/7356.911eacb1ce959b5e.js",
-<<<<<<< HEAD
-        "/7372.5164bcd737ca7e1a.js",
-        "/7428.d3e88321fff711c7.js",
-        "/7720.f9a3a636f1e8c4f3.js",
-<<<<<<< HEAD
-        "/7915.b2dea064703d9dca.js",
-        "/8066.3a2d1d7aa4351716.js",
-        "/8193.9a866a7729e3812c.js",
-        "/8314.5763658c3e292fc9.js",
-        "/8334.39026f9b6af55175.js",
-=======
-        "/7915.1315a660a06613d6.js",
-        "/8066.3a2d1d7aa4351716.js",
-=======
         "/7372.5c16663c06b53b6b.js",
         "/7428.3cc7aae3385354c5.js",
         "/7720.742914c81c54f415.js",
-        "/7915.0fda894cc7bfb902.js",
+        "/7915.e5f6c2661156e517.js",
         "/8066.83da09f5feca3142.js",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
         "/8193.9a866a7729e3812c.js",
         "/8314.52348a57ed623e38.js",
-        "/8334.734f113166c7e854.js",
-<<<<<<< HEAD
->>>>>>> 9564c8dd (version estable con github actions)
-        "/8361.1cd2740cebc08b66.js",
-        "/8477.2959c3dbb648cea5.js",
-        "/8584.57420406c9b07e74.js",
-        "/8805.70b2e10762af09fe.js",
-        "/8814.8393aa01479ab015.js",
-        "/8970.872a384aeb26c30a.js",
-<<<<<<< HEAD
-        "/9007.37e1c2bbf766d7f6.js",
-=======
-        "/9007.d7af6316c9ac23e2.js",
->>>>>>> 9564c8dd (version estable con github actions)
-=======
+        "/8334.39026f9b6af55175.js",
         "/8361.143a28dc93615ded.js",
         "/8477.2959c3dbb648cea5.js",
         "/8584.dacc155df3f9d716.js",
         "/8805.a5f22c8cdf31aeed.js",
         "/8814.7fa1433224afbae9.js",
         "/8970.b811f88291ea4f34.js",
-        "/9007.3329229e66817b71.js",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
+        "/9007.e14883d750e3cffa.js",
         "/9013.6b61da4a628f22ee.js",
         "/9344.2d668603b6130b28.js",
         "/964.c4ce606153e8af28.js",
-        "/9852.6941adf003e80126.js",
+        "/9852.843dc748bdff92c0.js",
         "/9977.948bf38bed890db4.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "/common.5fc7a1036c8e743e.js",
+        "/common.0f2db1b9f193b41d.js",
         "/index.html",
-        "/main.662e8e4c84f9157a.js",
-=======
-        "/common.9e11136af58e1c5e.js",
-=======
-        "/common.819121153eb80d42.js",
->>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
-        "/index.html",
-        "/main.b4d27fa9658dedc6.js",
->>>>>>> 9564c8dd (version estable con github actions)
-=======
-        "/common.3d7674abaf69c9ca.js",
-        "/index.html",
-        "/main.389d4c1e72609624.js",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
+        "/main.7da5f2ee1732511d.js",
         "/manifest.webmanifest",
         "/polyfills-core-js.c76198334f717402.js",
         "/polyfills-dom.bf542500b6fca113.js",
         "/polyfills.e9ea84778c1ce49f.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "/runtime.496a06c485b7ce17.js",
-=======
-        "/runtime.20f17c93d4f30c2a.js",
->>>>>>> 9564c8dd (version estable con github actions)
-=======
-        "/runtime.4e23f03398bce83a.js",
->>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
-        "/styles.602e1a294d0ac81d.css"
-=======
-        "/runtime.8581648885528df4.js",
+        "/runtime.9e44446682d0e32d.js",
         "/styles.4db01d10be953097.css"
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
       ],
       "patterns": []
     },
@@ -258,20 +125,7 @@
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
         "/assets/images/Mapa etiquetado2_3.jpg",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         "/assets/routes.json",
-=======
->>>>>>> 9564c8dd (version estable con github actions)
-=======
-=======
-        "/assets/routes.json",
->>>>>>> 88baeb4b (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
->>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
-=======
-        "/assets/routes.json",
->>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
         "/assets/shapes.svg"
       ],
       "patterns": []
@@ -281,37 +135,10 @@
   "hashTable": {
     "/1049.a036db6fa8985f40.js": "0a3fa242759b39c62ebd5f70cb3ebf80a6bd8d24",
     "/1102.7bab00f639615f6e.js": "a8492f3b5d99dac0aa4b9f9fb27817dcde7e6e62",
-<<<<<<< HEAD
-    "/1293.edd386430352426a.js": "c984c14cfef6e8e528cd295e2681f9bf75baa32f",
-    "/1459.32c41a59c0fd4cf1.js": "44877b3e7bcf6da59a309b378bf513e2ed59beb6",
-    "/1577.7c2099b4ba92b3ae.js": "782505fb17e71a23caf6d7cda4dbd1786556dd1e",
-<<<<<<< HEAD
-    "/2069.8ab462323c9539c4.js": "8b4afd6eb935297ad4ef889f2d419cb659875799",
-=======
-    "/2069.b2ce047d798504b1.js": "922ecd62b7042d26ec85f290ccb964d92456e973",
->>>>>>> 9564c8dd (version estable con github actions)
-    "/2075.1971ba880d06cc30.js": "bbdccb740aa86b30a1fe9dfa38b4318889e779b8",
-    "/2144.5d46fa3641b801f2.js": "350ab6d3fda1fc487636cddd85d01a9dd789336d",
-    "/2348.c1eab30cfa33ad35.js": "430dbc5a9536779a374ff785f50a11c07057a242",
-    "/2375.efb0d99d1467ed67.js": "9ce25a0456dfdeb1f46f29325fba006542cc7aeb",
-    "/2415.f0344460e8621e2e.js": "9b8bb5f15edd166d3d8bb1b9d709d87799a9b271",
-    "/2560.f635aa3da047e885.js": "a247268bef320b2de6030d2e3a212e0d8123b2a0",
-    "/2885.d64fa10bd441cbc8.js": "decb8eb5238e3b0dd882bc6ae460060da32daac2",
-    "/3162.14f7765befef2a0d.js": "d8b2d6f814c6320a0bd323f0b57de3ce721d73cc",
-    "/3506.ffc8d43656af6973.js": "03d5c8565fee6359c56fe928f9c3b30cc189275f",
-    "/3511.16739e7034875331.js": "6e4d1f1c9f3e316856cddfae6a3b42a50e075b1d",
-    "/3814.b141b720f428f531.js": "3f474571b067a0c5114066c99c883e1f37c7570d",
-<<<<<<< HEAD
-    "/3825.31a93f594403fe09.js": "26ef80f50ed15edad1ab498a22a05aa3298f5652",
-=======
-    "/3825.71af6fa8119fff8c.js": "f5a2dc86ad460ed2923430cfa08f2e7cbb73d3e1",
->>>>>>> 9564c8dd (version estable con github actions)
-    "/4171.f5bc55c1acb0f5c1.js": "c102eef6353ac0d31522f031eec01956f3e722f7",
-=======
     "/1293.19d706934eb20a5d.js": "09a244fafc485c41e3565bd0c22ae2bb3bc95bee",
     "/1459.08a8ae40030552ec.js": "ac4ca560b51876bc68fd3095e2efce78a81f34c2",
     "/1577.a2ba8b0ad9e3eecb.js": "cb108ba6e2db462996aacd791e44d5711bd07fd8",
-    "/2069.525e9b7e8b08f9f6.js": "8f88b643e18ba36bd9cd6772c0d244f18973afd9",
+    "/2069.216677237240c513.js": "1073e62e3a560c6929750df4e981ee5514954683",
     "/2075.1971ba880d06cc30.js": "bbdccb740aa86b30a1fe9dfa38b4318889e779b8",
     "/2144.5d46fa3641b801f2.js": "350ab6d3fda1fc487636cddd85d01a9dd789336d",
     "/2348.12b471577685ffbe.js": "bd7c3de58d196d3400f7f1f64d504760f2cfbe26",
@@ -323,113 +150,52 @@
     "/3506.6b1b9ae7f0a5340d.js": "e1ae19ab1ddd9c1990bd6929d42e20a840cecf39",
     "/3511.35af67cc0e7955b6.js": "08b41fa083dd1afd1110b3d3e2b05fe26b6f53b8",
     "/3814.0adb25562e15fea8.js": "dad08d25189aa10931f8a40a72b848dd4493e8fa",
-    "/3825.71af6fa8119fff8c.js": "f5a2dc86ad460ed2923430cfa08f2e7cbb73d3e1",
+    "/3825.31a93f594403fe09.js": "26ef80f50ed15edad1ab498a22a05aa3298f5652",
     "/4171.54a30c9be0b3f467.js": "4b383621b5f9675ba9371caae246ca170de7bb9d",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
     "/4183.0d54a4cc8cbc3a61.js": "7ac34ae2d37ee0b7359e4902c613a9d3e465f461",
     "/4406.9f4eb0b136e216ca.js": "d7412850dc269c966d5b54f0030194d1f50d7f78",
     "/441.7365b092a9748a15.js": "9385d149d59d1413fa59554d73cdc2d0659225c4",
     "/4463.a43f09ab005f11a6.js": "4a0090646f25b1356af560d09091d6e9ae953af7",
     "/4591.29bcefb22870f99e.js": "0218f49f273ac37d299b1f915b64cc9cb1211bc8",
     "/4699.01733b3942afbe92.js": "4903163f2e1577a6aa0a36723a244fe67eafb840",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "/4757.cf52f2caf6c78a22.js": "b00c7e67f27a0c32bbc3ade7b5f0efcc5438c53e",
-=======
-    "/4757.e44ea60c2360ef76.js": "d6f8ba0dfc4937b1136efed323decb54a9e97bb9",
->>>>>>> 9564c8dd (version estable con github actions)
-    "/4867.851bcd293dfbb40e.js": "cbbbaeb7ee6428bcbaeb0b0235c073aa472c01d8",
-=======
-    "/4757.2506f875d7a9ff27.js": "b559bbeeae7b704c7d6ac8dcdcab7d9d9eeb9ac7",
+    "/4757.49d5b4b585a5863f.js": "b1184ad0f56c1fec2e2b6d29f9eac853c9060938",
     "/4867.d9a2e792adf7549f.js": "de07232c146d116226b444d0975d42e30b4ed48a",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
     "/5100.659224ed1f94442c.js": "4bcff271096d94bb08b1c410abbd2d3078a05839",
     "/5197.46c9af489394a780.js": "5d82c14636d9a49c89c691d68f0caa34083e3099",
     "/5222.299c437fefac03d3.js": "f0b19c383f739206c63ad5b963a90a481a62d4a7",
-<<<<<<< HEAD
-    "/5712.a9a2db8da6f1a8cd.js": "876ef58a998fb875dcfb429e19bed0ab1bf0c75e",
-    "/5887.a5c18b8dbe242146.js": "1fcc0b5d8c4962ebfd2e64bc327eaadd960ba17c",
-    "/5949.03cac52022f7f5dc.js": "b65310b5e2e3bfbcaddfa63c4e9b2de657d7b2c9",
-    "/6024.3c02ab7fe82fedfe.js": "041c5fc80ab896744d98021599f7e425102dc186",
-<<<<<<< HEAD
-    "/6219.cf429c0cdda0bd72.js": "aec9fae54e5551ff2579027c26fd316672103026",
-    "/6433.d898f13c578268e4.js": "b4583fdba326a9c80a584499e583079d5b718c58",
-    "/6521.05db202d43d78abb.js": "a5631ee16931b096a9fafb329cd53d5562cd0337",
-    "/6688.a541df42882565e6.js": "bbe5847dd976d7c33884a4657dfc7b4e93990651",
-=======
-    "/6219.b2fca1fed8b507ce.js": "c69fb7e4ac6d38e46ba8fe58dc1720efaf28ca9a",
-    "/6433.d898f13c578268e4.js": "b4583fdba326a9c80a584499e583079d5b718c58",
-    "/6521.05db202d43d78abb.js": "a5631ee16931b096a9fafb329cd53d5562cd0337",
-=======
     "/5712.058b7e586f20f38b.js": "54df86ac14f542325ff6b38df65785adec1d4a8f",
     "/5887.77da27d6b391fa0b.js": "7a0f2b1a1d6d340982b2ec8c9073949941b953eb",
     "/5949.2ed93c457aa1e9fb.js": "42575fffb68aada86a07f9066403433c8346b1f9",
     "/6024.d1b99c205cc7f6eb.js": "b774ee961cb0d5bc81d0caaa5c8205e051ed1613",
     "/6433.4c4649e12b453cce.js": "71784aa1a585a9ae30e4181fc07773d614ffdc28",
     "/6521.334bc4997f6d6596.js": "5cdd2130652073b3487ebee0fdb411216e7c014a",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
-    "/6688.a8e17ef9d7fd83f3.js": "ee702400d03d4395fbcd0d7b6f9c93a2bedc3ef4",
->>>>>>> 9564c8dd (version estable con github actions)
+    "/6688.a541df42882565e6.js": "bbe5847dd976d7c33884a4657dfc7b4e93990651",
     "/6840.07e289ded493ad85.js": "5dd1024dd5d051639804490d62e32483aa0d6345",
     "/7030.1d75b716307e84d3.js": "e5e0ec27cddffe4b5bf80e1db6929d41c9788b5c",
     "/7076.1bbe7232f33c0234.js": "3ca4de394ee1f1b3ab66bb21ad58f09b7159f1e6",
     "/7179.80391eb100990080.js": "65ab817b67ca3471d4b3b3520f4fda34ccfb3949",
     "/7240.680a87741a5535b1.js": "302687665986a7c2d58ac583aaafdddca637cd03",
-<<<<<<< HEAD
     "/7339.ebc02007e82f5f0a.js": "d4d9c98cac55532cf3aa80952b4d44da2b1117af",
-=======
-    "/7339.48cee305c79a9048.js": "bc7e28361a529497e91601960c19d641bcd08f98",
->>>>>>> 9564c8dd (version estable con github actions)
     "/7356.911eacb1ce959b5e.js": "633c19455326cfc11043807f2af36e559df6ae3e",
-<<<<<<< HEAD
-    "/7372.5164bcd737ca7e1a.js": "24d5ee3ee18ef3ac98e157f3d303db61a5ae4801",
-    "/7428.d3e88321fff711c7.js": "ac12f143b1b102cbb0af6b9f9e4bbea4c063cca1",
-    "/7720.f9a3a636f1e8c4f3.js": "768612d2a618954c7635e448673f38743cc7f091",
-<<<<<<< HEAD
-    "/7915.b2dea064703d9dca.js": "1c0ad17ba3668521c10efad8139b0d812afc557d",
-    "/8066.3a2d1d7aa4351716.js": "5979f7b5ced299ef83e915ea4d44cf6b36c79c14",
-    "/8193.9a866a7729e3812c.js": "6660370f2ba77552b6561e1c86c53bcdd2dc8002",
-    "/8314.5763658c3e292fc9.js": "bc8fbf27adef8c93c0ce3aab1aee65e6891838c0",
-    "/8334.39026f9b6af55175.js": "a35bb444c032d596d3805bc1317dd0bdd6087142",
-=======
-    "/7915.1315a660a06613d6.js": "1305cf055f8536f19bc7e09fb61d88def43f631b",
-    "/8066.3a2d1d7aa4351716.js": "5979f7b5ced299ef83e915ea4d44cf6b36c79c14",
-=======
     "/7372.5c16663c06b53b6b.js": "82925929560fd74532a3689dc71d1c02a4ac5eea",
     "/7428.3cc7aae3385354c5.js": "eb15992cb8e3886aff889d881e4edbc156158805",
     "/7720.742914c81c54f415.js": "3fb141948e5543db22fdcdd90eeab6563a5a2bea",
-    "/7915.0fda894cc7bfb902.js": "529adab3e92e8caa56b07f7e050ec556afc71695",
+    "/7915.e5f6c2661156e517.js": "1c7415a2288b5a716076c2daeae0b1f6a44824d4",
     "/8066.83da09f5feca3142.js": "952eec11a46ecc369c6128bca8ea910dafcb9c00",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
     "/8193.9a866a7729e3812c.js": "6660370f2ba77552b6561e1c86c53bcdd2dc8002",
     "/8314.52348a57ed623e38.js": "fb5500c4a759d486b1f16d8ddb5ac5ddab91c165",
-    "/8334.734f113166c7e854.js": "fc65522f985daf67db290245857645c0fc530df7",
-<<<<<<< HEAD
->>>>>>> 9564c8dd (version estable con github actions)
-    "/8361.1cd2740cebc08b66.js": "acff243a9345d206330254512de165779a5b65b1",
-    "/8477.2959c3dbb648cea5.js": "4f8ca9ad74e9ba4de1cdafeea288e18aac031af6",
-    "/8584.57420406c9b07e74.js": "5b6574cec01e5b5c601d9894a065106970513176",
-    "/8805.70b2e10762af09fe.js": "fa4ab16cfb7d9bca3cb4fb3e3fd15238e2a4eb89",
-    "/8814.8393aa01479ab015.js": "70cf3b69490940a4ab4a14649fdc8e33206a2c26",
-    "/8970.872a384aeb26c30a.js": "886ecd38f40eeeb87b891417abb4093a22dcfbe8",
-<<<<<<< HEAD
-    "/9007.37e1c2bbf766d7f6.js": "99b23a2b0a14121d88b8709d5c4185a6b2f6e92b",
-=======
-    "/9007.d7af6316c9ac23e2.js": "805c7c0fb29e2bec0c5a67b376b18126acf42f82",
->>>>>>> 9564c8dd (version estable con github actions)
-=======
+    "/8334.39026f9b6af55175.js": "a35bb444c032d596d3805bc1317dd0bdd6087142",
     "/8361.143a28dc93615ded.js": "580659d18d4d5d68ccb215dc6b94e89a547217cf",
     "/8477.2959c3dbb648cea5.js": "4f8ca9ad74e9ba4de1cdafeea288e18aac031af6",
     "/8584.dacc155df3f9d716.js": "436f4d34a493ff6d6dbab5818a4b098b86322c5f",
     "/8805.a5f22c8cdf31aeed.js": "ea0d8f9b33abbfaca3ea0b935b638903ada3eb17",
     "/8814.7fa1433224afbae9.js": "f1ea6d0051617f2b20e78fa0558112b2ff8578c3",
     "/8970.b811f88291ea4f34.js": "e9a1613bb69bcf54882edb77ede943da446cfad3",
-    "/9007.3329229e66817b71.js": "84b4a9e5f5439ab551d4910faba31912abba439d",
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
+    "/9007.e14883d750e3cffa.js": "a0ca738abc2ad9eb52051cfa5e6d3354c74e8f38",
     "/9013.6b61da4a628f22ee.js": "d8e3e8b36c6db2b3abfb44df6c0ad2f924979d08",
     "/9344.2d668603b6130b28.js": "1ae72903a628d0aadfd23d1755f69d411908124b",
     "/964.c4ce606153e8af28.js": "9ea387da6093fbb2c4c7369f10d55592f7f86d52",
-    "/9852.6941adf003e80126.js": "31e7b7470fdc25b03ca189f8cea4ce8d01e8081d",
+    "/9852.843dc748bdff92c0.js": "4bacbda9330ff6b8e2451eade197add9585578b7",
     "/9977.948bf38bed890db4.js": "69d28b500316993f42bbe5475a43fcd4cd66d7db",
     "/Urbanist-Medium.4873a301b920cd3b.ttf": "8fdacadcc8bf9a54e98e7894f54c0d8edab92b03",
     "/assets/control.webp": "1b828b8cccf13939163b5604182133d65fb9333b",
@@ -461,60 +227,17 @@
     "/assets/icons/icon-72x72.png": "5676b89c6b1eb33be572e241bf8a486ae1eb8d0f",
     "/assets/icons/icon-96x96.png": "757772af83e960a9fbf8c115262fd7c1539a014c",
     "/assets/images/Mapa etiquetado2_3.jpg": "7de9c5801a0def91f45381c6adbd914177bb62df",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "/assets/routes.json": "aa7d52848cc72061423772385c8a37f4d9540682",
-    "/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
-    "/common.5fc7a1036c8e743e.js": "20d7d247d42539ca4415f62c71bad2be1800fe0a",
-    "/index.html": "bcbe9a7254726fedb3a313c3fa4d420b502773bc",
-    "/main.662e8e4c84f9157a.js": "cbdea45dcf834ff0b78129bb7a10bed23d9797a6",
-=======
-=======
->>>>>>> 5c3745fd (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
-    "/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
-    "/common.9e11136af58e1c5e.js": "82603d69d9b437dd45c8f755b337e81284c312ab",
-    "/index.html": "a9727f74404c346ef5bc9dc5e8c2f972d1ad8cfd",
-=======
-    "/assets/routes.json": "aa7d52848cc72061423772385c8a37f4d9540682",
-    "/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
-<<<<<<< HEAD
-    "/common.9e11136af58e1c5e.js": "82603d69d9b437dd45c8f755b337e81284c312ab",
-    "/index.html": "20ded8c523fc4e699e3d5ca15f5bb45f89ed5cbb",
->>>>>>> 88baeb4b (Añadida de vuelta la carpeta www que había sido ignorada y no servía por eso la página y también añadido el archivo routes.json que debería permitir a Azure servir todas las rutas de mi aplicación de Angular sin problemas...)
-=======
-    "/common.819121153eb80d42.js": "24267866081348c8489102ed8e2e738a23014457",
-    "/index.html": "983aa3bbb821b3abac35d4314d3d36e847fb49b4",
->>>>>>> 3ad1a422 (Quitada la parte de gestionar 'manualmente' las cookies)
-    "/main.b4d27fa9658dedc6.js": "06daea3cc087119929da49175a296eb706c24175",
->>>>>>> 9564c8dd (version estable con github actions)
-    "/manifest.webmanifest": "9a088b7c4339228d1082e666ce105dc889bc180c",
-    "/polyfills-core-js.c76198334f717402.js": "d6e270a2944b6a95a9b97dafd25599ba825e8d7f",
-    "/polyfills-dom.bf542500b6fca113.js": "3fa333db66c8050f12e99d977f5098a6de8dd593",
-    "/polyfills.e9ea84778c1ce49f.js": "9f600af15369792882c19b11011740238690dd5e",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "/runtime.496a06c485b7ce17.js": "71c4d3bb037a0b05e36cfd282999047ac0f6eeff",
-=======
-    "/runtime.20f17c93d4f30c2a.js": "4600642cf16552b9ee900fa263ed392ff362c160",
->>>>>>> 9564c8dd (version estable con github actions)
-=======
-    "/runtime.4e23f03398bce83a.js": "fd7e98675099ad17b1cbda40d48272464ebb0e14",
->>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
-    "/styles.602e1a294d0ac81d.css": "a1de47d6817cfde0e619d8f441ab7120a12484d4"
-=======
     "/assets/routes.json": "54ccaae3f3a0d068ba86c00fd78b66325a043e8e",
     "/assets/shapes.svg": "638f87e27e6fc7ddfd6e6b262ea70d690f6c7011",
-    "/common.3d7674abaf69c9ca.js": "0dcc8b801c94c7408d5213a476c164139162e402",
-    "/index.html": "ce4705073cac6d81072e184c03f5abe1d64a558c",
-    "/main.389d4c1e72609624.js": "2f69179b8adefa505885f86e45e5f48439731d7f",
+    "/common.0f2db1b9f193b41d.js": "17bc555eee2489c513b3703223049a41c07ddfad",
+    "/index.html": "c4f8ecb246215d9f2f7a9ffd58256b8c66377f1a",
+    "/main.7da5f2ee1732511d.js": "5fdc38863e9bb9ef9414658d75da03892ada1ee4",
     "/manifest.webmanifest": "c5293e8ae27b659ee3e2c6ea1b13be56f8b0fa4b",
     "/polyfills-core-js.c76198334f717402.js": "d6e270a2944b6a95a9b97dafd25599ba825e8d7f",
     "/polyfills-dom.bf542500b6fca113.js": "3fa333db66c8050f12e99d977f5098a6de8dd593",
     "/polyfills.e9ea84778c1ce49f.js": "9f600af15369792882c19b11011740238690dd5e",
-    "/runtime.8581648885528df4.js": "3406468662e742b04599ee8213202a2b725e2528",
+    "/runtime.9e44446682d0e32d.js": "0426895c1dd5fa691713b813465dd97d00691ec7",
     "/styles.4db01d10be953097.css": "95817df41d75f9037bfad6f0c7511bfac7a898ee"
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
   },
   "navigationUrls": [
     {

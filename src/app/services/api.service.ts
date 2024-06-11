@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-<<<<<<< HEAD
 import { Observable, of, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { ToastController } from '@ionic/angular'; // Asegúrate de tener ToastController importado
-import { Router } from '@angular/router';
-
-
-=======
-import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Order, Product } from '../components/order-card/order-card.component';
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 
 @Injectable({
@@ -34,13 +27,8 @@ export class ApiService {
   login(username: string, password: string): Observable<any> {
     const url = 'https://mercadito-app.azurewebsites.net/login';
     const body = { boleta: username, password: password };
-<<<<<<< HEAD
-    return this.http.post(url, body, { observe: 'response', withCredentials: true }) // withCredentials: true para enviar cookies
-=======
     return this.http.post(url, body, { observe: 'response', withCredentials: true }) // Observa la respuesta completa
->>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
       .pipe(
-<<<<<<< HEAD
         map((response: HttpResponse<any>) => response.body),
         catchError(async error => {
           console.error('Error en el inicio de sesión:', error);
@@ -54,10 +42,6 @@ export class ApiService {
           toast.present()
 
           return throwError(() => new Error(error)); // Propaga el error para manejarlo en el componente
-=======
-        map((response: HttpResponse<any>) => {
-          return response.body;
->>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
         })
       );
   }
