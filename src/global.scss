@@ -68,6 +68,11 @@ ion-thumbnail {
   --border-radius: 20px;
 }
 
+body {
+  // Aplica el fondo degradado azul
+	background: linear-gradient(to bottom, #006598, #004c73);
+}
+
 @font-face {
     font-family: 'Static';
     src: url('assets/fonts/static/Urbanist-Medium.ttf');

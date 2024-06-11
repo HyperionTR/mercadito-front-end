@@ -1,0 +1,64 @@
+<ion-card button="true" (click)="toggleDetails()">
+  <ion-card-header>
+    <ion-icon slot="end" [name]="showDetails ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+    <ion-card-title *ngIf="!isProduct">
+      <strong>{{ order.lugar_entrega }}</strong>, {{ order.fecha_pedido.slice(0,10) }}
+    </ion-card-title>
+    <ion-card-title *ngIf="isProduct">
+      {{ producto.nombre }}
+    </ion-card-title>
+    <ion-card-subtitle *ngIf="!isProduct">
+      {{ order.id_pedido }}
+    </ion-card-subtitle>
+    <ion-card-subtitle *ngIf="isProduct">
+      <strong>${{ producto.precio }}</strong>
+    </ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="showDetails && !isProduct">
+    <ion-list *ngFor="let detail of order.detalles" lines="none">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="detail.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + detail.imagen) : 'https://via.placeholder.com/150'" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ detail.nombre }}</h2>
+          <p>${{ detail.precio }}</p>
+          <p *ngIf="detail.vendedor !== currentUser?.nombre_de_usuario">Vendedor: {{ detail.vendedor }}</p>
+        </ion-label>
+        <ion-select
+          *ngIf="isSellerView"
+          slot="end"
+          [value]="detail.estado"
+          (ionChange)="updateOrderStatus(detail, $event.detail.value)"
+          interface="popover"
+          (click)="($event.stopPropagation())"
+        >
+          <ion-select-option
+            *ngFor="let status of getAvailableStatuses(detail.estado)"
+            [value]="status"
+            [disabled]="!isStatusAllowed(detail.estado, status)">
+            {{ status }}
+          </ion-select-option>
+        </ion-select>
+        <ion-badge *ngIf="!isSellerView" slot="end" [color]="getStatusColor(detail.estado)">
+          {{ detail.estado }}
+        </ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+  <ion-card-content *ngIf="showDetails && isProduct">
+    <!-- Product details -->
+    <ion-item>
+      <ion-thumbnail slot="start" *ngIf="isProduct">
+        <img [src]="producto.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + producto.imagen) : 'https://via.placeholder.com/150'" />
+      </ion-thumbnail>
+      <p>{{ producto.descripcion }}</p>
+    </ion-item>
+    <!-- Action buttons -->
+    <ion-button color="dark" (click)="openEditProductModal(producto);$event.stopPropagation();">Editar</ion-button>
+    <ion-button color="dark" (click)="deleteProduct();$event.stopPropagation();">Eliminar</ion-button>
+    <ion-button [color]="producto.disponibilidad ? 'success' : 'danger'" (click)="toggleAvailability();$event.stopPropagation();">Cambiar disponibilidad</ion-button>
+  </ion-card-content>
+
+</ion-card>

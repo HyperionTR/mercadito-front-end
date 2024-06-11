@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { HttpParams } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -19,10 +18,9 @@ export class HomePage implements OnInit {
   currentUser: any;
   @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll; // Referencia al componente de scroll infinito
 
-
   constructor(
     private apiService: ApiService, 
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
@@ -37,16 +35,17 @@ export class HomePage implements OnInit {
       this.currentUser = currentUser;
       console.log(this.currentUser);
     });
+  }
 
-    this.apiService.getProducts(this.currentPage).subscribe(
-      (data: any) => {
-        this.products = data; 
-        this.currentPage++;
-      },
-      (error) => {
-        console.error('Error al cargar productos:', error);
-      }
-    );
+  // Recargamos los productos al entrar en la página con ionic
+  // ionviewWillEnter es un métodoe especial dado por el router de Ionic y se 
+  // ejecuta cada vez que se entra en la página según el ciclo de vida mostado en esta página
+  // https://ionicframework.com/docs/angular/lifecycle  
+  ionViewWillEnter() {
+    this.products = [];
+    this.currentPage = 1;
+    this.loadData(null);
+    this.infiniteScroll.disabled = false; // Habilita el scroll infinito nuevamente
   }
 
   checkLoggedIn() {
@@ -57,22 +56,21 @@ export class HomePage implements OnInit {
     }
   }
 
-    loadData(event: any) { 
+  loadData(event: any) { 
     if (this.searchTerm) { // Si hay un término de búsqueda, usa products/search
       this.apiService.searchProducts(this.currentPage, this.searchTerm).subscribe(
         (data: any) => {
           // Al no haber más productos, se deshabilita el scroll infinito
           if (data && data.length > 0) { 
+            if (event)
+              event.target.disabled = true;
             this.products = this.products.concat(data);
             this.currentPage++; 
+            event.target.complete(); // Completa el evento del scroll infinito
           } else {
             if (event) { 
               event.target.disabled = true;
             }
-          }
-  
-          if (event) { 
-            event.target.complete(); // Completa el evento del scroll infinito
           }
         },
         (error) => {
@@ -86,16 +84,15 @@ export class HomePage implements OnInit {
       this.apiService.getProducts(this.currentPage).subscribe(
         (data: any) => {
           if (data && data.length > 0) { 
+            if (event)
+              event.target.disabled = true;
             this.products = this.products.concat(data);
-            this.currentPage++; 
+            this.currentPage++;
+            event.target.complete(); // Completa el evento del scroll infinito
           } else {
             if (event) { 
               event.target.disabled = true;
             }
-          }
-  
-          if (event) { 
-            event.target.complete(); // Completa el evento del scroll infinito
           }
         },
         (error) => {

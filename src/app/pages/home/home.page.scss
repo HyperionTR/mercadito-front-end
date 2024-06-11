@@ -1,14 +1,22 @@
 ion-button {
     font-size: 12px;
-    white-space: nowrap;
-    width: 90px;
+    white-space: normal;
+    width: 80%;
     height: 35px;
 }
 
-  p{
-    font-size: 14px;
-  }
+p{
+  font-size: 14px;
+}
 
 img {
   border-radius: 20px;
+}
+
+ion-row {
+  vertical-align: middle;
+}
+
+ion-grid.loginToolbar {
+  --ion-grid-columns: 9;
 }

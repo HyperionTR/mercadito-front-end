@@ -47,7 +47,8 @@ export class PerfilPage implements OnInit {
         localStorage.removeItem('currentUser');
         this.currentUser = null;
         this.authService.setLoggedIn(false);
-        this.router.navigate(['/login']);
+        this.authService.setCurrentUser(null);
+        this.router.navigate(['/']);
 
         const toast = await this.toastController.create({
           message: response,

@@ -19,7 +19,7 @@
   <ion-card class="ion-padding" *ngFor="let product of cartProducts; let i = index">
     <ion-item class="no-lines">
       <ion-thumbnail slot="start">
-        <img [src]="(product.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + product.imagen) : 'https://via.placeholder.com/150')" alt="Product Image"/>
+        <img [src]="product.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + product.imagen) : 'https://via.placeholder.com/150'" alt="Product Image"/>
       </ion-thumbnail>
       <ion-icon color="danger" aria-hidden="true" name="trash" slot="end" (click)="removeProduct(i)"></ion-icon>
       <ion-note color="dark">

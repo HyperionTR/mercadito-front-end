@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngIf="imagePreview">
+    <img [src]="imagePreview" width="100%">
+  </ion-card>
+  <ion-card *ngIf="!imagePreview">
+    <ion-skeleton-text animated></ion-skeleton-text>
+  </ion-card>
+
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre"
+        [counter]="true"
+        maxlength="45"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion"
+        [counter]="true"
+        maxlength="150"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input formControlName="precio" type="number"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item expand="block">
+      <ion-button color="dark" size="default" (click)="selectImage()">
+        <ion-icon name="image-outline" slot="start"></ion-icon>
+        Seleccionar Imagen
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden />
+      </ion-button>
+    </ion-item>
+    <br><br>
+    <ion-item expand="block">
+      <ion-button color="dark" size="large" type="submit" [disabled]="!productForm.valid">Guardar</ion-button>
+    </ion-item>
+  </form>
+</ion-content>

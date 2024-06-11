@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
-
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-delivery',
@@ -20,7 +20,8 @@ export class DeliveryPage implements OnInit {
     private modalController: ModalController,
     private apiService: ApiService,
     private toastController: ToastController,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {}
@@ -70,6 +71,10 @@ export class DeliveryPage implements OnInit {
         toast.present();
       }
     );
+
+    // Usamos el servicio de carrito para limpiarlo
+    this.cartService.clearCart();
+
   }
 
   closeModal() {

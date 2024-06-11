@@ -11,22 +11,44 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="ion-padding">
-    <ion-segment value="seg1">
-      <ion-segment-button value="seg1">
-        <ion-label>Mis compras</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="seg2">
-        <ion-label>Mi inventario</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="seg3">
-        <ion-label>Mis ventas</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </div>
+  <ion-segment (ionChange)="segmentChanged($event)" value="compras">
+    <ion-segment-button value="compras">
+      <ion-label>Mis compras</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="inventario" *ngIf="isSeller">
+      <ion-label>Mi inventario</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="ventas" *ngIf="isSeller">
+      <ion-label>Mis ventas</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <div class="ion-text-center">
-    <p>Aun no tienes compras</p>
+  <div [ngSwitch]="currentSegment">
+    
+    <div *ngSwitchCase="'compras'">
+      <app-order-card *ngFor="let order of orders" [order]="order"></app-order-card>
+      <div *ngIf="orders.length === 0" class="ion-text-center">
+        <p>Aún no tienes compras</p>
+      </div>
+    </div>
+    
+    <div *ngSwitchCase="'inventario'">
+      <!-- Cambiado a usar un modal -->
+      <ion-button *ngIf="isSeller" expand="block" color="dark" (click)="openEditProductModal()">
+        + Agregar producto
+      </ion-button>
+      
+      <app-order-card *ngFor="let product of inventory" [producto]="product" [isProduct]="true"></app-order-card>
+      <div *ngIf="inventory.length === 0" class="ion-text-center">
+        <p>Aún no tienes productos en tu inventario</p>
+      </div>
+    </div>
+    
+    <div *ngSwitchCase="'ventas'">
+      <app-order-card *ngFor="let order of sales" [order]="order" [isSellerView]="true"></app-order-card>
+      <div *ngIf="sales.length === 0" class="ion-text-center">
+        <p>Aún no tienes ventas</p>
+      </div>
+    </div>
   </div>
-  
 </ion-content>

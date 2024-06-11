@@ -32,4 +32,10 @@ export class CartService {
   getCartProducts() {
     return this.cartProducts.asObservable();
   }
+
+  clearCart() {
+    this.cartProducts.next([]);
+    localStorage.removeItem('cartProducts');
+  }
+
 }

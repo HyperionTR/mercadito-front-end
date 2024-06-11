@@ -3,6 +3,7 @@ import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { DeliveryPage } from '../delivery/delivery.page';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,11 @@ export class CartPage implements OnInit {
   total: number = 0;
   cartSubscription!: Subscription;
 
-  constructor(private cartService: CartService, private modalController: ModalController) {}
+  constructor(
+    private cartService: CartService,
+    private modalController: ModalController,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit() {
     this.loadCartProducts();
@@ -23,6 +28,7 @@ export class CartPage implements OnInit {
       this.calculateTotal();
     });
   }
+
 
   loadCartProducts() {
     const cartProducts = localStorage.getItem('cartProducts');
@@ -60,4 +66,12 @@ export class CartPage implements OnInit {
 
     return await modal.present();
   }
+
+  clearCart() {
+    this.cartProducts = [];
+    localStorage.removeItem('cartProducts');
+    this.cartService.setCartProducts(this.cartProducts);
+    this.calculateTotal();
+  }
+
 }

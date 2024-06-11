@@ -18,7 +18,7 @@ export class ProductDetailsPage implements OnInit {
     private activatedRoute: ActivatedRoute, 
     private apiService: ApiService, 
     private cartService: CartService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -73,4 +73,6 @@ export class ProductDetailsPage implements OnInit {
     // Navegar al carrito
     this.router.navigate(['/tabs/cart']);
   }
+
+
 }

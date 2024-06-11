@@ -1,3 +1,4 @@
+// src/app/pages/account/account-routing.module.ts
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -6,7 +7,7 @@ import { AccountPage } from './account.page';
 const routes: Routes = [
   {
     path: '',
-    component: AccountPage
+    component: AccountPage,
   }
 ];
 

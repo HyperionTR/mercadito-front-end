@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+<<<<<<< HEAD
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular'; // Asegúrate de tener ToastController importado
 import { Router } from '@angular/router';
 
 
+=======
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Order, Product } from '../components/order-card/order-card.component';
+>>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
 
 
 @Injectable({
@@ -28,7 +34,11 @@ export class ApiService {
   login(username: string, password: string): Observable<any> {
     const url = 'https://mercadito-app.azurewebsites.net/login';
     const body = { boleta: username, password: password };
+<<<<<<< HEAD
     return this.http.post(url, body, { observe: 'response', withCredentials: true }) // withCredentials: true para enviar cookies
+=======
+    return this.http.post(url, body, { observe: 'response', withCredentials: true }) // Observa la respuesta completa
+>>>>>>> 00f52a3d (Básicamente... terminada toda la aplicación.)
       .pipe(
 <<<<<<< HEAD
         map((response: HttpResponse<any>) => response.body),
@@ -46,27 +56,6 @@ export class ApiService {
           return throwError(() => new Error(error)); // Propaga el error para manejarlo en el componente
 =======
         map((response: HttpResponse<any>) => {
-          // if (response.headers.has('Set-Cookie')) {
-          //   const cookie = response.headers.get('Set-Cookie');
-          //   if (cookie) {
-          //     // Divide la cadena de la cookie en partes para obtener el nombre y el valor
-          //     const cookieParts = cookie.split(';');
-          //     const cookieNameValue = cookieParts[0].split('=');
-          //     const cookieName = cookieNameValue[0];
-          //     const cookieValue = cookieNameValue[1];
-          
-          //     // Crea un nuevo objeto de cookie con el dominio y la ruta
-          //     const cookieObject = {
-          //       [cookieName]: cookieValue,
-          //       domain: '.azurewebsites.net', // Dominio de tu API (incluye el punto inicial para cookies de subdominio)
-          //       path: '/', // Ruta de la cookie (normalmente "/")
-          //       // Puedes agregar otras opciones de cookie aquí, como 'secure' o 'expires'
-          //     };
-          
-          //     // Convierte el objeto de cookie a una cadena y almacénalo
-          //     document.cookie = Object.entries(cookieObject).map(([key, value]) => `${key}=${value}`).join('; ');
-          //   }
-          // }
           return response.body;
 >>>>>>> 1e183cc8 (Quitada la parte de gestionar 'manualmente' las cookies)
         })
@@ -75,7 +64,7 @@ export class ApiService {
 
   logout(): Observable<string> {
     const url = 'https://mercadito-app.azurewebsites.net/login'; // Endpoint de cierre de sesión
-    return this.http.delete(url, { headers: this.getHeaders(), observe: 'response', responseType: 'text' })
+    return this.http.delete(url, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true})
       .pipe(
         map((response: HttpResponse<string>) => {
           return response.body || '';
@@ -136,12 +125,100 @@ export class ApiService {
 
   createOrder(orderData: any): Observable<string> {
     const url = 'https://mercadito-app.azurewebsites.net/pedidos';
-    return this.http.post(url, orderData, { headers: this.getHeaders(), observe: 'response', responseType: 'text' }) // Incluye los encabezados
+    return this.http.post(url, orderData, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true }) // Incluye los encabezados
       .pipe(
         map((response: HttpResponse<string>) => {
           return response.body || '';
         })
       );
+  }
+
+  getOrders(): Observable<Order[]> {
+    const url = 'https://mercadito-app.azurewebsites.net/pedidos';
+    return this.http.get<Order[]>(url, { withCredentials: true }); 
+  }
+
+  getSales(): Observable<Order[]> {
+    const url = 'https://mercadito-app.azurewebsites.net/pedidos/sales';
+    return this.http.get<Order[]>(url, { withCredentials: true });
+  }
+
+  getInventory(): Observable<any[]> {
+    const url = 'https://mercadito-app.azurewebsites.net/products/seller/data';
+    return this.http.get<Product[]>(url, { withCredentials: true });
+  }
+
+  updateOrderStatus(orderId: string, productId: number, newStatus: string): Observable<string> {
+    const url = `https://mercadito-app.azurewebsites.net/pedidos/${orderId}`; // URL con el ID del pedido
+    const body = { estado: newStatus, id_producto: productId }; // Datos en formato JSON
+
+    return this.http.patch(url, body, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true })
+      .pipe(
+        map((response: HttpResponse<string>) => {
+          return response.body || '';
+        })
+      );
+  }
+
+  updateProduct(productId: number, formData: FormData): Observable<any> {
+    const url = `https://mercadito-app.azurewebsites.net/products/seller/data/${productId}`;
+    return this.http.patch(url, formData, { observe: 'response', responseType: 'text', withCredentials: true })
+      .pipe(
+        map((response: HttpResponse<string>) => {
+          return response.body || '';
+        })
+      );
+  }
+
+  createProduct(formData: FormData): Observable<any> {
+    const url = `https://mercadito-app.azurewebsites.net/products/seller`;
+    return this.http.post(url, formData, { observe: 'response', responseType: 'text', withCredentials: true })
+      .pipe(
+        map((response: HttpResponse<string>) => {
+          return response.body || '';
+        })
+      );
+  }
+
+  deleteProduct(productId: number): Observable<any> {
+    const url = `https://mercadito-app.azurewebsites.net/products/seller/${productId}`;
+    return this.http.delete(url, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true})
+      .pipe(
+        map((response: HttpResponse<string>) => {
+          return response.body || '';
+        })
+      );
+  }
+
+  updateProductAvailability(productId: number, availability: boolean): Observable<any> {
+    const url = `https://mercadito-app.azurewebsites.net/products/seller/avail/${productId}`;
+    return this.http.patch(url, { disponibilidad: availability }, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true})
+      .pipe(
+        map((response: HttpResponse<string>) => {
+          return response.body || '';
+        })
+      );
+  }
+
+  getProductImage(image: string | null): Observable<string> {
+    const backend_url = `https://mercadito-app.azurewebsites.net/images/products/${image}`;
+    const generic_url_seed ='https://picsum.photos/seed';
+    const generic_url = 'https://picsum.photos/256'
+
+    return this.http.get(backend_url, { observe: 'response' })
+      .pipe(
+        map((response: HttpResponse<any>) => {
+          
+          if ( image === null ) 
+            return generic_url;
+          
+          if ( response.status === 404 )
+            return generic_url_seed + '/' + image + '/256';
+          else 
+            return backend_url;
+        })
+      );
+
   }
 
 

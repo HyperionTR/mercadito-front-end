@@ -12,11 +12,10 @@
   </ion-header>
 
   <div *ngIf="productDetails" class="ion-padding">
-    <img width="100%" [src]="(productDetails.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + productDetails.imagen) : 'https://via.placeholder.com/150')" alt="Product Image">
+    <img width="100%" [src]="productDetails.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + productDetails.imagen) : 'https://via.placeholder.com/150'" alt="Product Image">
     <p style="font-size: 18px; margin-top: 10px;"><b>{{ productDetails.nombre }}</b></p>
     <p style="font-size: 16px; margin-top: -30px;"><br><b>Descripción</b><br></p>
     <p style="font-size: 12px; margin-top: -10px;">{{ productDetails.descripcion }}</p>
-    <p style="font-size: 12px; margin-top: -10px;">Disponibilidad: {{ productDetails.disponibilidad }}</p>
     <p style="font-size: 12px; margin-top: -10px;">Vendedor: {{ productDetails.nombre_de_usuario }}</p>
   </div>
 </ion-content>

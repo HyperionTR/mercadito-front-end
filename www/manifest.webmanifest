@@ -1,9 +1,10 @@
 {
-  "name": "app",
-  "short_name": "app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Mercadito ESCOM",
+  "short_name": "Mercadito",
+  "theme_color": "#006598",
+  "background_color": "#ffffff",
   "display": "standalone",
+  "orientation": "portrait",
   "scope": "./",
   "start_url": "./",
   "icons": [
