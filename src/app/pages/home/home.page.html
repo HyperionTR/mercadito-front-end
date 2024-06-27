@@ -25,7 +25,7 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let product of products" size="6">
-        <img width="100%" [src]="product.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + product.imagen) : 'https://via.placeholder.com/150'" alt="Product Image" [routerLink]="['/tabs/product-details', product.id_producto]">
+        <img width="100%" [src]="apiService.getProductImage( product.imagen, product.placeholder )" alt="Product Image" [routerLink]="['/tabs/product-details', product.id_producto]">
         <p style="font-size: 16px; margin-top: 0px;"> {{ product.nombre }} </p>
         <p style="margin-top: -30px;"><br> <b>{{ product.precio }}</b> <br> por {{ product.nombre_de_usuario }}</p>
       </ion-col>

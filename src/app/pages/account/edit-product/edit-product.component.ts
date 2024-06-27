@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
-import { Product } from 'src/app/components/order-card/order-card.component';
+import { Product } from 'src/app/interfaces/products.interface';
 
 @Component({
   selector: 'app-edit-product',
@@ -21,7 +21,7 @@ export class EditProductComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private apiService: ApiService,
+    protected apiService: ApiService,
     private modalController: ModalController,
     private toastController: ToastController
   ) {
@@ -38,8 +38,8 @@ export class EditProductComponent implements OnInit {
 
       // Si estamos editando un producto, mostramos su imagen actual
       if (this.product.imagen) {
-        this.imagePreview = `https://mercadito-app.azurewebsites.net/images/products/${this.product.imagen}`;
-      }
+        this.imagePreview = this.apiService.getProductImage(this.product.imagen, this.product.placeholder);
+      } 
     }
   }
 

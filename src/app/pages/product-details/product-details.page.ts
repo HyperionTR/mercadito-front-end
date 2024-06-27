@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { CartService } from '../../services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/interfaces/products.interface';
 
 @Component({
   selector: 'app-product-details',
@@ -11,31 +12,41 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailsPage implements OnInit {
 
-  productId = '';
-  productDetails!: any;
+  protected product: Product = {
+    nombre_de_usuario: '',
+    boleta_vendedor: 0,
+    id_producto: 0,
+    nombre: '',
+    imagen: '',
+    descripcion: '',
+    precio: 0,
+    disponibilidad: false,
+    fecha_creacion: '',
+    placeholder: false
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute, 
-    private apiService: ApiService, 
+    protected apiService: ApiService, 
     private cartService: CartService,
     private router: Router,
   ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.productId = params['id'];
-      this.loadProductDetails(this.productId);
+      this.product.id_producto = params['id'];
+      this.loadProductDetails(this.product.id_producto);
     });
   }
 
-  loadProductDetails(productId: string) {
+  loadProductDetails(productId: number) {
     this.apiService.productDetails(productId).subscribe(
       (response: any) => {
         if (response) {
           // Convertir el precio a número
           response.precio = parseFloat(response.precio);
-          this.productDetails = response;
-          console.log(this.productDetails);
+          this.product = response;
+          console.log(this.product);
         } else {
           console.error('API response was not successful');
         }
@@ -46,7 +57,7 @@ export class ProductDetailsPage implements OnInit {
     );
   }
 
-  addProductCart(product: any) {
+  addProductCart(product: Product) {
     // Verificar si el producto tiene un id_producto
     if (!product.id_producto) {
       console.error('Product does not have an id_producto:', product);

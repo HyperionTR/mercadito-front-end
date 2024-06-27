@@ -5,14 +5,20 @@ import { catchError, map } from 'rxjs/operators';
 import { Order, Product } from '../components/order-card/order-card.component';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient, private toastController: ToastController, private router:Router) { }
+  private api = environment.api;
+
+  constructor(
+    private http: HttpClient,
+    private toastController: ToastController,
+    private router:Router
+  ) { }
 
   private getHeaders(): HttpHeaders {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
@@ -25,7 +31,7 @@ export class ApiService {
   }
 
   login(username: string, password: string): Observable<any> {
-    const url = 'https://mercadito-app.azurewebsites.net/login';
+    const url = this.api + '/login';
     const body = { boleta: username, password: password };
     return this.http.post(url, body, { observe: 'response', withCredentials: true }) // Observa la respuesta completa
       .pipe(
@@ -47,7 +53,7 @@ export class ApiService {
   }
 
   logout(): Observable<string> {
-    const url = 'https://mercadito-app.azurewebsites.net/login'; // Endpoint de cierre de sesión
+    const url = this.api + '/login'; // Endpoint de cierre de sesión
     return this.http.delete(url, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true})
       .pipe(
         map((response: HttpResponse<string>) => {
@@ -57,7 +63,7 @@ export class ApiService {
   }
 
   verifySession(): Observable<any> {
-    const url = 'https://mercadito-app.azurewebsites.net/login/verify';
+    const url = this.api + '/login/verify';
     return this.http.get(url, { withCredentials: true }) // withCredentials: true para enviar cookies
       .pipe(
         map((response: any) => response),
@@ -75,30 +81,30 @@ export class ApiService {
   }
 
   products(): Observable<any>{
-    const url = 'https://mercadito-app.azurewebsites.net/products/data';
+    const url = this.api + '/products/data';
     return this.http.get(url);
   }
 
   getProducts(page: number): Observable<any[]> { // Método para obtener productos sin búsqueda
     const params = new HttpParams().set('page', page.toString());
-    const url = 'https://mercadito-app.azurewebsites.net/products/data';
+    const url = this.api + '/products/data';
     return this.http.get<any[]>(url, { params });
   }
 
   searchProducts(page: number, query: string): Observable<any[]> { // Método para buscar productos
     const params = new HttpParams().set('page', page.toString()).set('query', query);
-    const url = 'https://mercadito-app.azurewebsites.net/products/search';
+    const url = this.api + '/products/search';
     return this.http.get<any[]>(url, { params });
   }
 
   
-  productDetails(id: string): Observable<any>{
-    const url = 'https://mercadito-app.azurewebsites.net/products/data/' + id;
+  productDetails(id: number): Observable<any>{
+    const url = this.api + '/products/data/' + id;
     return this.http.get(url);
   }
 
   register(jsonData: any): Observable<string> {
-    const url = 'https://mercadito-app.azurewebsites.net/verify/registration';
+    const url = this.api + '/verify/registration';
     return this.http.post(url, jsonData, { headers: this.getHeaders(), observe: 'response', responseType: 'text' }) // Incluye los encabezados
       .pipe(
         map((response: HttpResponse<string>) => {
@@ -108,7 +114,7 @@ export class ApiService {
   }
 
   createOrder(orderData: any): Observable<string> {
-    const url = 'https://mercadito-app.azurewebsites.net/pedidos';
+    const url = this.api + '/pedidos';
     return this.http.post(url, orderData, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true }) // Incluye los encabezados
       .pipe(
         map((response: HttpResponse<string>) => {
@@ -118,22 +124,22 @@ export class ApiService {
   }
 
   getOrders(): Observable<Order[]> {
-    const url = 'https://mercadito-app.azurewebsites.net/pedidos';
+    const url = this.api + '/pedidos';
     return this.http.get<Order[]>(url, { withCredentials: true }); 
   }
 
   getSales(): Observable<Order[]> {
-    const url = 'https://mercadito-app.azurewebsites.net/pedidos/sales';
+    const url = this.api + '/pedidos/sales';
     return this.http.get<Order[]>(url, { withCredentials: true });
   }
 
   getInventory(): Observable<any[]> {
-    const url = 'https://mercadito-app.azurewebsites.net/products/seller/data';
+    const url = this.api + '/products/seller/data';
     return this.http.get<Product[]>(url, { withCredentials: true });
   }
 
   updateOrderStatus(orderId: string, productId: number, newStatus: string): Observable<string> {
-    const url = `https://mercadito-app.azurewebsites.net/pedidos/${orderId}`; // URL con el ID del pedido
+    const url = this.api + `/pedidos/${orderId}`; // URL con el ID del pedido
     const body = { estado: newStatus, id_producto: productId }; // Datos en formato JSON
 
     return this.http.patch(url, body, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true })
@@ -145,7 +151,7 @@ export class ApiService {
   }
 
   updateProduct(productId: number, formData: FormData): Observable<any> {
-    const url = `https://mercadito-app.azurewebsites.net/products/seller/data/${productId}`;
+    const url = this.api + `/products/seller/data/${productId}`;
     return this.http.patch(url, formData, { observe: 'response', responseType: 'text', withCredentials: true })
       .pipe(
         map((response: HttpResponse<string>) => {
@@ -155,7 +161,7 @@ export class ApiService {
   }
 
   createProduct(formData: FormData): Observable<any> {
-    const url = `https://mercadito-app.azurewebsites.net/products/seller`;
+    const url = this.api + `/products/seller`;
     return this.http.post(url, formData, { observe: 'response', responseType: 'text', withCredentials: true })
       .pipe(
         map((response: HttpResponse<string>) => {
@@ -165,7 +171,7 @@ export class ApiService {
   }
 
   deleteProduct(productId: number): Observable<any> {
-    const url = `https://mercadito-app.azurewebsites.net/products/seller/${productId}`;
+    const url = this.api + `/products/seller/${productId}`;
     return this.http.delete(url, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true})
       .pipe(
         map((response: HttpResponse<string>) => {
@@ -175,7 +181,7 @@ export class ApiService {
   }
 
   updateProductAvailability(productId: number, availability: boolean): Observable<any> {
-    const url = `https://mercadito-app.azurewebsites.net/products/seller/avail/${productId}`;
+    const url = this.api + `/products/seller/avail/${productId}`;
     return this.http.patch(url, { disponibilidad: availability }, { headers: this.getHeaders(), observe: 'response', responseType: 'text', withCredentials: true})
       .pipe(
         map((response: HttpResponse<string>) => {
@@ -184,24 +190,18 @@ export class ApiService {
       );
   }
 
-  getProductImage(image: string | null): Observable<string> {
-    const backend_url = `https://mercadito-app.azurewebsites.net/images/products/${image}`;
+  getProductImage(image: string | null, placeholder: boolean): string {
+    const backend_url = this.api + `/images/products/${image}`;
     const generic_url_seed ='https://picsum.photos/seed';
     const generic_url = 'https://picsum.photos/256'
 
-    return this.http.get(backend_url, { observe: 'response' })
-      .pipe(
-        map((response: HttpResponse<any>) => {
-          
-          if ( image === null ) 
-            return generic_url;
-          
-          if ( response.status === 404 )
-            return generic_url_seed + '/' + image + '/256';
-          else 
-            return backend_url;
-        })
-      );
+    if (image && !placeholder) {
+      return backend_url;
+    } else if (placeholder) {
+      return `${generic_url_seed}/${image}/256`;
+    } else {
+      return generic_url;
+    }
 
   }
 

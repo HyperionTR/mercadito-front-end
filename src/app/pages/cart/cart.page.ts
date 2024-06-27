@@ -18,7 +18,7 @@ export class CartPage implements OnInit {
   constructor(
     private cartService: CartService,
     private modalController: ModalController,
-    private apiService: ApiService
+    protected apiService: ApiService
   ) {}
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { HttpParams } from '@angular/common/http';
+import { Product } from 'src/app/interfaces/products.interface';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { HttpParams } from '@angular/common/http';
 })
 export class HomePage implements OnInit {
 
-  products: any[] = []; // Array para almacenar los productos
+  products: Product[] = []; // Array para almacenar los productos
   currentPage = 1; // Página actual
   searchTerm: string = ''; // Término de búsqueda
   isLoggedIn: boolean = false;
@@ -19,7 +20,7 @@ export class HomePage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll; // Referencia al componente de scroll infinito
 
   constructor(
-    private apiService: ApiService, 
+    protected apiService: ApiService, 
     private authService: AuthService,
   ) {}
 
@@ -84,14 +85,15 @@ export class HomePage implements OnInit {
       this.apiService.getProducts(this.currentPage).subscribe(
         (data: any) => {
           if (data && data.length > 0) { 
-            if (event)
-              event.target.disabled = true;
+            if (event) {
+              event.target.complete(); // Completa el evento del scroll infinito
+            }
             this.products = this.products.concat(data);
             this.currentPage++;
-            event.target.complete(); // Completa el evento del scroll infinito
           } else {
             if (event) { 
               event.target.disabled = true;
+              event.target.complete(); // Completa el evento del scroll infinito
             }
           }
         },

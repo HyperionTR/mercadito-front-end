@@ -11,24 +11,28 @@
     </ion-toolbar>
   </ion-header>
 
-  <div *ngIf="productDetails" class="ion-padding">
-    <img width="100%" [src]="productDetails.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + productDetails.imagen) : 'https://via.placeholder.com/150'" alt="Product Image">
-    <p style="font-size: 18px; margin-top: 10px;"><b>{{ productDetails.nombre }}</b></p>
-    <p style="font-size: 16px; margin-top: -30px;"><br><b>Descripción</b><br></p>
-    <p style="font-size: 12px; margin-top: -10px;">{{ productDetails.descripcion }}</p>
-    <p style="font-size: 12px; margin-top: -10px;">Vendedor: {{ productDetails.nombre_de_usuario }}</p>
+  <div *ngIf="product" class="ion-padding">
+    <img width="100%" [src]="apiService.getProductImage( product.imagen, product.placeholder )" alt="Product Image">
+    <p style="font-size: 18px; margin-top: 10px;"><b>{{ product.nombre }}</b></p>
+    <p style="font-size: 16px; margin-top: -15px;">por {{ product.nombre_de_usuario }}</p>
+
+    <p style="font-size: 18px; margin-top: -10px;"><br><b>Descripción</b><br></p>
+    <p style="font-size: 16px; margin-top: -10px; white-space: pre-wrap;">{{ product.descripcion }}</p>
+    <br>
+    <p style="font-size: 12px; margin-top: -10px; white-space: pre-wrap;"> Creado el {{ product.fecha_creacion.slice(0, 10) }}</p>
+
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-row *ngIf="productDetails">
+    <ion-row *ngIf="product">
       <ion-col>
         <p style="font-size: 12px; margin-left: 10px;">Precio</p>
-        <p style="font-size: 16px; margin-left: 10px; margin-top: -10px;"><b>${{ productDetails.precio | number:'1.2-2' }}</b></p>
+        <p style="font-size: 16px; margin-left: 10px; margin-top: -10px;"><b>${{ product.precio | number:'1.2-2' }}</b></p>
       </ion-col>
       <ion-col class="ion-text-end">
-        <ion-button style="margin-top: 15px;" shape="round" color="dark" (click)="addProductCart(productDetails)">Agregar al carrito</ion-button>
+        <ion-button style="margin-top: 15px;" shape="round" color="dark" (click)="addProductCart(product)">Agregar al carrito</ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

@@ -11,45 +11,53 @@
 
 <ion-content>
 
-  <ion-card *ngIf="imagePreview">
-    <img [src]="imagePreview" width="100%">
+  <ion-card *ngIf="imagePreview" >
+    <ion-img [src]="imagePreview" width="100%"></ion-img>
   </ion-card>
   <ion-card *ngIf="!imagePreview">
-    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-icon class="img-placeholder" name="image-outline" style="width: 100%;"></ion-icon>
   </ion-card>
 
   <form [formGroup]="productForm" (ngSubmit)="submitForm()">
     <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
       <ion-input formControlName="nombre"
+        label="Nombre**"
+        labelPlacement="floating"
         [counter]="true"
-        maxlength="45"
+        maxlength="80"
+        [required]="true"
       ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Descripción</ion-label>
       <ion-textarea formControlName="descripcion"
         [counter]="true"
-        maxlength="150"
+        maxlength="500"
+        [autoGrow]="true"
+        label="Descripción**"
+        labelPlacement="floating"
+        [required]="true"
       ></ion-textarea>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Precio</ion-label>
-      <ion-input formControlName="precio" type="number"></ion-input>
+      <ion-input 
+        label="Precio**"
+        labelPlacement="floating"
+        formControlName="precio"
+        type="number"
+        [required]="true"
+        ></ion-input>
     </ion-item>
     <br>
-    <ion-item expand="block">
+    <div style="text-align: center;">
       <ion-button color="dark" size="default" (click)="selectImage()">
         <ion-icon name="image-outline" slot="start"></ion-icon>
-        Seleccionar Imagen
+        Seleccionar Imagen (Opcional)
         <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden />
       </ion-button>
-    </ion-item>
+    </div>
     <br><br>
-    <ion-item expand="block">
-      <ion-button color="dark" size="large" type="submit" [disabled]="!productForm.valid">Guardar</ion-button>
-    </ion-item>
+    <ion-button color="dark" expand="block" size="large" type="submit" [disabled]="!productForm.valid">Guardar</ion-button>
   </form>
 </ion-content>
