@@ -27,11 +27,13 @@
     </ion-item>
 
     <ion-item *ngIf="selectedLocation === 'Otro'">
-      <ion-label position="floating">Ingresa el lugar de entrega:</ion-label>
       <ion-input
         [(ngModel)]="otherLocation"
         [counter]="true"
         maxlength="80"
+        label="Ingresa el lugar de entrega"
+        labelPlacement="floating"
+        required="true"
         ></ion-input>
     </ion-item>
 
@@ -51,7 +53,12 @@
   </ion-list>
 
   <div class="ion-text-center">
-    <ion-button color="dark" shape="round" (click)="confirmDelivery()">Confirmar</ion-button>
+    <ion-button
+      color="dark"
+      shape="round"
+      [disabled]="(selectedLocation === 'Otro' && !otherLocation) || !selectedLocation"
+      (click)="confirmDelivery()"
+      >Confirmar</ion-button>
     <ion-button color="dark" shape="round" (click)="closeModal()">Cancelar</ion-button>
   </div>
 

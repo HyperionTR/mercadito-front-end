@@ -51,13 +51,13 @@
     </ion-item>
     <br>
     <div style="text-align: center;">
-      <ion-button color="dark" size="default" (click)="selectImage()">
+      <ion-button color="dark" shape="round" size="default" (click)="selectImage()">
         <ion-icon name="image-outline" slot="start"></ion-icon>
         Seleccionar Imagen (Opcional)
         <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden />
       </ion-button>
     </div>
     <br><br>
-    <ion-button color="dark" expand="block" size="large" type="submit" [disabled]="!productForm.valid">Guardar</ion-button>
+    <ion-button color="dark" shape="round" expand="block" size="large" type="submit" [disabled]="!productForm.valid">Guardar</ion-button>
   </form>
 </ion-content>

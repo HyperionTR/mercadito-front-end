@@ -62,11 +62,15 @@
         <img [src]="apiService.getProductImage(producto.imagen, producto.placeholder)" />
       </ion-thumbnail>
       <p class="description">{{ producto.descripcion }}</p>
+      <ion-button fill="clear" slot="end" (click)="deleteProduct();$event.stopPropagation();">
+        <ion-icon name="trash" slot="icon-only" size="large" class="red-icon"></ion-icon>
+      </ion-button>
     </ion-item>
     <!-- Action buttons -->
-    <ion-button color="dark" (click)="openEditProductModal(producto);$event.stopPropagation();">Editar</ion-button>
-    <ion-button color="dark" (click)="deleteProduct();$event.stopPropagation();">Eliminar</ion-button>
-    <ion-button [color]="producto.disponibilidad ? 'success' : 'danger'" (click)="toggleAvailability();$event.stopPropagation();">Cambiar disponibilidad</ion-button>
+      <div style="text-align: center;">
+        <ion-button color="dark" expand="block" shape="round" (click)="openEditProductModal(producto);$event.stopPropagation();">Editar</ion-button>
+        <ion-button shape="round" expand="block" [color]="producto.disponibilidad ? 'success' : 'danger'" (click)="toggleAvailability();$event.stopPropagation();">Cambiar disponibilidad</ion-button>
+      </div>
   </ion-card-content>
 
 </ion-card>
