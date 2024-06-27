@@ -15,6 +15,7 @@ export class DeliveryPage implements OnInit {
 
   selectedLocation: string = 'Palapas de gobierno'; // Valor por defecto
   otherLocation: string = '';
+  notas: string | null = null;
 
   constructor(
     private modalController: ModalController,
@@ -37,7 +38,8 @@ export class DeliveryPage implements OnInit {
 
     const orderData = {
       info: {
-        lugar_entrega: lugarEntrega
+        lugar_entrega: lugarEntrega,
+        notas: this.notas
       },
       detalles: this.cartProducts.map(product => ({
         boleta_vendedor: product.boleta_vendedor,

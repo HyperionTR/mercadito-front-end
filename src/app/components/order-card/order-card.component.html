@@ -8,7 +8,8 @@
       {{ producto.nombre }}
     </ion-card-title>
     <ion-card-subtitle *ngIf="!isProduct">
-      {{ order.id_pedido }}
+      <strong>Pedido de {{ order.comprador }}</strong>
+      <br> {{order.id_pedido}}
     </ion-card-subtitle>
     <ion-card-subtitle *ngIf="isProduct">
       <strong>${{ producto.precio }}</strong>
@@ -16,6 +17,13 @@
   </ion-card-header>
 
   <ion-card-content *ngIf="showDetails && !isProduct">
+    <ion-list>
+      <ion-item *ngIf="order.notas" lines="none">
+        <ion-label position="stacked"><strong>Notas</strong></ion-label>
+        <ion-text class="description">{{ order.notas }}</ion-text>
+      </ion-item>
+    </ion-list>
+    
     <ion-list *ngFor="let detail of order.detalles" lines="none">
       <ion-item>
         <ion-thumbnail slot="start">

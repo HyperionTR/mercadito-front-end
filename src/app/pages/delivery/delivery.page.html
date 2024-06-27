@@ -11,7 +11,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
+  <ion-list [lines]="'none'">
     <ion-item>
       <ion-label>Lugar de entrega:</ion-label>
       <ion-select [(ngModel)]="selectedLocation" (ionChange)="onLocationChange()">
@@ -28,8 +28,26 @@
 
     <ion-item *ngIf="selectedLocation === 'Otro'">
       <ion-label position="floating">Ingresa el lugar de entrega:</ion-label>
-      <ion-input [(ngModel)]="otherLocation"></ion-input>
+      <ion-input
+        [(ngModel)]="otherLocation"
+        [counter]="true"
+        maxlength="80"
+        ></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-textarea>
+        <ion-textarea
+          [(ngModel)]="notas"
+          placeholder="Escribe aquí tus notas"
+          label="Notas (opcional)"
+          labelPlacement="floating"
+          [counter]="true"
+          maxlength="300"
+          ></ion-textarea>
+      </ion-textarea>
+    </ion-item>
+
   </ion-list>
 
   <div class="ion-text-center">
