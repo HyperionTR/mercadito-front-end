@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Order } from '../interfaces/orders';
@@ -7,6 +7,7 @@ import { Product } from '../interfaces/products';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,26 +32,10 @@ export class ApiService {
     });
   }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<HttpResponse<User>> {
     const url = this.api + '/login';
     const body = { boleta: username, password: password };
-    return this.http.post(url, body, { observe: 'response', withCredentials: true }) // Observa la respuesta completa
-      .pipe(
-        map((response: HttpResponse<any>) => response.body),
-        catchError(async error => {
-          console.error('Error en el inicio de sesión:', error);
-
-          // Muestra el mensaje de error en un toast
-          const toast = await this.toastController.create({
-            message: error.error,
-            duration: 2000,
-            position: 'top'
-          });
-          toast.present()
-
-          return throwError(() => new Error(error)); // Propaga el error para manejarlo en el componente
-        })
-      );
+    return this.http.post<User>(url, body, { observe: 'response', withCredentials: true });
   }
 
   logout(): Observable<string> {
@@ -63,11 +48,27 @@ export class ApiService {
       );
   }
 
-  verifySession(): Observable<any> {
+  updateUserType(user: User, new_user_type: string): Observable<string> {
+    const url = this.api + '/verify/update'; // Endpoint de actualización de tipo de usuario
+    const boleta = user.boleta;
+
+    if  (new_user_type === 'comprador' || new_user_type === 'vendedor') {
+      return this.http.patch(url, { boleta, tipo_de_usuario: new_user_type }, { observe: 'response', responseType: 'text', withCredentials: true })
+        .pipe(
+          map((response: HttpResponse<string>) => {
+            return response.body || '';
+          })
+        );
+    } else {
+      return of ('Tipo de usuario inválido');
+    }
+  }
+
+  verifySession(): Observable<User | null> {
     const url = this.api + '/login/verify';
-    return this.http.get(url, { withCredentials: true }) // withCredentials: true para enviar cookies
+    return this.http.get<User>(url, { withCredentials: true }) // withCredentials: true para enviar cookies
       .pipe(
-        map((response: any) => response),
+        map((response: User) => response),
         catchError(error => {
           if (error.status === 401) {
             // Si no está autenticado, redirigir a la página de inicio de sesión

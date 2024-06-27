@@ -5,15 +5,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div *ngIf="!isLoggedIn" class="ion-text-center">
+  <div *ngIf="!currentUser" class="ion-text-center">
+    <h3> Se parte de la comunidad de... </h3>
+    <h1> ¡Mercadito ESCOM! </h1>
+    <br>
     <ion-button color="dark" shape="round" routerLink="/login">Iniciar sesión</ion-button>
     <ion-button color="dark" shape="round" routerLink="/register">Registrarse</ion-button>
   </div>
 
-  <div *ngIf="isLoggedIn">
+  <div *ngIf="currentUser">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>{{ currentUser.usuario }}</ion-card-title>
+        <ion-card-title>{{ currentUser.nombre_de_usuario }}</ion-card-title>
         <ion-card-subtitle>{{ currentUser.boleta }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
@@ -25,6 +28,11 @@
           <ion-icon name="basket" slot="start"></ion-icon>
           <ion-label>{{ currentUser.tipo_de_usuario }}</ion-label>
         </ion-item>
+        
+        <ion-button (click)="updateUserType()">
+          <ion-icon name="sync" slot="start"></ion-icon>
+          Cambiar usuario a {{ newUserType }}
+        </ion-button>
       </ion-card-content>
     </ion-card>
     <ion-button color="danger" shape="round" expand="block" (click)="onLogout()">Cerrar sesión</ion-button>

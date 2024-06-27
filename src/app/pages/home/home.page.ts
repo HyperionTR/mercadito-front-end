@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { HttpParams } from '@angular/common/http';
 import { Product } from 'src/app/interfaces/products';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomePage implements OnInit {
   currentPage = 1; // Página actual
   searchTerm: string = ''; // Término de búsqueda
   isLoggedIn: boolean = false;
-  currentUser: any;
+  currentUser: User | null = null;
   @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll; // Referencia al componente de scroll infinito
 
   constructor(

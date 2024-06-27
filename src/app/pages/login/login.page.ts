@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private apiService: ApiService, private router: Router, private authService: AuthService) { }
+  constructor(
+    private apiService: ApiService, private router: Router, private authService: AuthService, private toastController: ToastController
+    ) { }
 
   username!: string;
   password!: string;
@@ -20,26 +22,28 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  onLogin() {
+  async onLogin() {
+
+    const toast = await this.toastController.create({
+      message: 'Iniciando sesión...',
+      duration: 2000,
+      position: 'top'
+    });
+
     this.apiService.login(this.username, this.password).subscribe(
       (response) => {
         // Manejar la respuesta de la API (por ejemplo, redireccionar a otra página)
         console.log('Respuesta de la API:', response);
-        localStorage.setItem('currentUser', JSON.stringify(response));
-        const currentUserString = localStorage.getItem('currentUser');
-        if (currentUserString !== null) {
-          this.authService.setCurrentUser(JSON.parse(currentUserString));
-          this.authService.setLoggedIn(true);
-        }
+        this.authService.setCurrentUser(response.body);
+        this.authService.setLoggedIn(true);
         this.router.navigate(['/']);
+        toast.message = '¡Sesión iniciada!';
       },
       (error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          this.router.navigate(['/login']); // Redirige al login en caso de error 401
-        } else {
-          console.error('Error al iniciar sesión:', error);
-        }
+        toast.message = 'Error al iniciar sesión, ' + error.error;
       });
+
+      toast.present();
   }
 
 }

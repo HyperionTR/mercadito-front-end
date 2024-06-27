@@ -2,15 +2,21 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { tap } from 'rxjs/operators';
+import { User } from '../interfaces/user';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * Servicio para manejar la autenticación de usuarios
+ * Contiene Observables parasuscribirse al valor actual del usuario y estado de inicio de sesión
+ */
 export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  private currentUserSubject = new BehaviorSubject<any>(null);
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
 
   constructor(private apiService: ApiService) {}
 
@@ -20,7 +26,12 @@ export class AuthService {
   }
 
   // Método para obtener el observable del usuario actual
-  currentUser$(): Observable<any> {
+  currentUser$(): Observable<User | null> {
+
+    if ( !this.currentUserSubject.value ) {
+      this.checkLoggedIn().subscribe();
+    }
+
     return this.currentUserSubject.asObservable();
   }
 
@@ -30,7 +41,7 @@ export class AuthService {
   }
 
   // Método para establecer el usuario actual
-  setCurrentUser(user: any) {
+  setCurrentUser(user: User | null) {
     this.currentUserSubject.next(user);
   }
 
