@@ -21,26 +21,12 @@ export class AccountPage implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private apiService: ApiService,
-    private authService: AuthService,
+    protected apiService: ApiService,
+    protected authService: AuthService,
   ) {}
 
   ngOnInit() {
-    this.authService.currentUser$().subscribe(user => {
-      if (user) {
-        this.isSeller = user.tipo_de_usuario === 'vendedor';
-        this.loadOrders();
-        if (this.isSeller) {
-          this.loadSales();
-          this.loadInventory();
-        }
-      } else {
-        this.isSeller = false;
-        this.orders = [];
-        this.sales = [];
-        this.inventory = [];
-      }
-    });
+    this.loadEverything();
     console.log('AccountPage initialized');
   }
 
@@ -91,6 +77,10 @@ export class AccountPage implements OnInit {
 
   // Actualizar todo al momento de cambiar a esta página
   ionViewWillEnter() {
+    this.loadEverything();
+  }
+
+  loadEverything() {
     this.authService.currentUser$().subscribe(user => {
       if (user) {
         this.isSeller = user.tipo_de_usuario === 'vendedor';
@@ -127,5 +117,6 @@ export class AccountPage implements OnInit {
 
     return await modal.present();
   }
+
 
 }

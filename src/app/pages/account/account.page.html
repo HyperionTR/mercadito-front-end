@@ -38,7 +38,7 @@
         + Agregar producto
       </ion-button>
       
-      <app-order-card *ngFor="let product of inventory" [producto]="product" [isProduct]="true"></app-order-card>
+      <app-order-card *ngFor="let product of inventory" [producto]="product" [isProduct]="true" (modalClosed)="loadEverything()"></app-order-card>
       <div *ngIf="inventory.length === 0" class="ion-text-center">
         <p>Aún no tienes productos en tu inventario</p>
       </div>

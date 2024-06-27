@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -38,6 +38,8 @@ export class OrderCardComponent implements OnInit {
     fecha_creacion: '',
     placeholder: false
   };
+
+  @Output() public modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   showDetails: boolean = false;
   currentUser: any = null;
@@ -134,10 +136,14 @@ export class OrderCardComponent implements OnInit {
     });
 
     modal.onDidDismiss().then(() => {
-      AccountPage.prototype.loadInventory();
+      this.emitModalClosed();
     });
 
     return await modal.present();
+  }
+
+  emitModalClosed() {
+    this.modalClosed.emit(true);
   }
 
   async deleteProduct() {
@@ -160,11 +166,17 @@ export class OrderCardComponent implements OnInit {
                   position: 'top'
                 });
                 toast.present();
-                // Actualiza la lista de productos después de eliminar (puedes emitir un evento o recargar los datos)
+                
+                this.emitModalClosed();// Actualiza la lista de productos después de eliminar (puedes emitir un evento o recargar los datos)
                 
               },
               async (error) => {
-                // ... (manejo de errores)
+                const toast = await this.toastController.create({
+                  message: `No se pudo eliminar el producto: ${error.error}`,
+                  duration: 2000,
+                  position: 'top'
+                });
+                toast.present();
               }
             );
           }
