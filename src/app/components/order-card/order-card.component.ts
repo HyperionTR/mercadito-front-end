@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { EditProductComponent } from 'src/app/pages/account/edit-product/edit-product.component';
 import { AccountPage } from 'src/app/pages/account/account.page';
+import { Product } from 'src/app/interfaces/products';
+import { Order, OrderDetails } from 'src/app/interfaces/orders';
 
 @Component({
   selector: 'app-order-card',
@@ -17,6 +19,8 @@ export class OrderCardComponent implements OnInit {
     id_pedido: '',
     lugar_entrega: '',
     fecha_pedido: '',
+    comprador: '',
+    notas: '',
     detalles: []
   };
   @Input() isSellerView: boolean = false; // Indica si es la vista del vendedor
@@ -30,16 +34,17 @@ export class OrderCardComponent implements OnInit {
     imagen: '',
     descripcion: '',
     precio: 0,
-    disponibilidad: false
+    disponibilidad: false,
+    fecha_creacion: '',
+    placeholder: false
   };
-
 
   showDetails: boolean = false;
   currentUser: any = null;
 
   constructor(
     private authService: AuthService,
-    private apiService: ApiService,
+    protected apiService: ApiService,
     private toastController: ToastController,
     private router: Router,
     private alertController: AlertController,
@@ -71,7 +76,7 @@ export class OrderCardComponent implements OnInit {
     // ... (lógica para mostrar el mapa en un modal)
   }
 
-  updateOrderStatus(detail: OrderDetail, newStatus: string) {
+  updateOrderStatus(detail: OrderDetails, newStatus: string) {
     this.apiService.updateOrderStatus(this.order.id_pedido, detail.id_producto, newStatus).subscribe(
       async (response) => {
         detail.estado = newStatus; 
@@ -195,30 +200,3 @@ export class OrderCardComponent implements OnInit {
   }
 }
 
-export interface OrderDetail {
-  id_producto: number;
-  vendedor: string;
-  nombre: string;
-  imagen: string | null;
-  precio: string;
-  estado: string;
-}
-
-export interface Order {
-  id_pedido: string;
-  lugar_entrega: string;
-  fecha_pedido: string;
-  detalles: OrderDetail[];
-}
-
-// Interfaz para los producots
-export interface Product {
-  nombre_de_usuario: string,
-  boleta_vendedor: number,
-  id_producto: number,
-  nombre: string,
-  imagen: string | null,
-  descripcion: string,
-  precio: number,
-  disponibilidad: boolean
-}

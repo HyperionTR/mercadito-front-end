@@ -3,7 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { HttpParams } from '@angular/common/http';
-import { Product } from 'src/app/interfaces/products.interface';
+import { Product } from 'src/app/interfaces/products';
 
 @Component({
   selector: 'app-home',

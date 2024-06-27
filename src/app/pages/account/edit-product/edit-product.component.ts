@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
-import { Product } from 'src/app/interfaces/products.interface';
+import { Product } from 'src/app/interfaces/products';
 
 @Component({
   selector: 'app-edit-product',

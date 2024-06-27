@@ -19,7 +19,7 @@
     <ion-list *ngFor="let detail of order.detalles" lines="none">
       <ion-item>
         <ion-thumbnail slot="start">
-          <img [src]="detail.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + detail.imagen) : 'https://via.placeholder.com/150'" />
+          <img [src]="apiService.getProductImage(detail.imagen, detail.placeholder)" />
         </ion-thumbnail>
         <ion-label>
           <h2>{{ detail.nombre }}</h2>
@@ -51,9 +51,9 @@
     <!-- Product details -->
     <ion-item>
       <ion-thumbnail slot="start" *ngIf="isProduct">
-        <img [src]="producto.imagen ? ('https://mercadito-app.azurewebsites.net/images/products/' + producto.imagen) : 'https://via.placeholder.com/150'" />
+        <img [src]="apiService.getProductImage(producto.imagen, producto.placeholder)" />
       </ion-thumbnail>
-      <p>{{ producto.descripcion }}</p>
+      <p class="description">{{ producto.descripcion }}</p>
     </ion-item>
     <!-- Action buttons -->
     <ion-button color="dark" (click)="openEditProductModal(producto);$event.stopPropagation();">Editar</ion-button>

@@ -3,7 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { CartService } from '../../services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/interfaces/products.interface';
+import { Product } from 'src/app/interfaces/products';
 
 @Component({
   selector: 'app-product-details',

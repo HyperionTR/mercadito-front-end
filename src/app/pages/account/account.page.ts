@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
-import { Order, Product } from '../../components/order-card/order-card.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { Product } from 'src/app/interfaces/products';
+import { Order } from 'src/app/interfaces/orders';
 
 @Component({
   selector: 'app-account',
