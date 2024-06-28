@@ -48,23 +48,13 @@ export class ApiService {
       );
   }
 
-  updateUserType(user: User, new_user_type: string): Observable<string> {
+  updateUserType(new_user_type: string, password: string): Observable<string> {
     const url = this.api + '/verify/update'; // Endpoint de actualización de tipo de usuario
-    const boleta = user.boleta;
 
-    if  (new_user_type === 'comprador' || new_user_type === 'vendedor') {
-      return this.http.patch(url, { boleta, tipo_de_usuario: new_user_type }, { observe: 'response', responseType: 'text', withCredentials: true })
-        .pipe(
-          map((response: HttpResponse<string>) => {
-            return response.body || '';
-          })
-        );
-    } else {
-      return of ('Tipo de usuario inválido');
-    }
+    return this.http.patch<string>(url, { password, tipo_de_usuario: new_user_type }, { withCredentials: true} );
   }
 
-  verifySession(): Observable<User | null> {
+  verifySession(login_redirect: boolean): Observable<User | null> {
     const url = this.api + '/login/verify';
     return this.http.get<User>(url, { withCredentials: true }) // withCredentials: true para enviar cookies
       .pipe(
@@ -72,7 +62,8 @@ export class ApiService {
         catchError(error => {
           if (error.status === 401) {
             // Si no está autenticado, redirigir a la página de inicio de sesión
-            this.router.navigate(['/login']); // Redirige al login en caso de error 401
+            if ( login_redirect ) 
+              this.router.navigate(['/login']); // Redirige al login en caso de error 401
             return of(null);
           } else {
             console.error('Error al verificar la sesión:', error);

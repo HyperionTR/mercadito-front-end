@@ -26,10 +26,10 @@ export class AuthService {
   }
 
   // Método para obtener el observable del usuario actual
-  currentUser$(): Observable<User | null> {
+  currentUser$(login_redirect: boolean): Observable<User | null> {
 
     if ( !this.currentUserSubject.value ) {
-      this.checkLoggedIn().subscribe();
+      this.checkLoggedIn(login_redirect).subscribe();
     }
 
     return this.currentUserSubject.asObservable();
@@ -45,8 +45,8 @@ export class AuthService {
     this.currentUserSubject.next(user);
   }
 
-  checkLoggedIn(): Observable<boolean> {
-    return this.apiService.verifySession().pipe(
+  checkLoggedIn(login_redirect: boolean): Observable<boolean> {
+    return this.apiService.verifySession(login_redirect).pipe(
       tap((user: any) => {
         if (user) {
           this.setCurrentUser(user);

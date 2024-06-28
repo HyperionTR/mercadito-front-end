@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { ToastController } from '@ionic/angular'; // Importa ToastController
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -54,21 +55,20 @@ export class RegisterPage implements OnInit {
         });
         toast.present();
 
-        // Realiza el inicio de sesión automático
         this.apiService.login(form.value.boleta, form.value.password).subscribe(
-          (loginResponse) => {
-            localStorage.setItem('currentUser', JSON.stringify(loginResponse));
-            const currentUserString = localStorage.getItem('currentUser');
-            if (currentUserString !== null) {
-              this.authService.setCurrentUser(JSON.parse(currentUserString));
-              this.authService.setLoggedIn(true);
-            }
+          (response) => {
+            // Manejar la respuesta de la API (por ejemplo, redireccionar a otra página)
+            console.log('Respuesta de la API:', response);
+            this.authService.setCurrentUser(response.body);
+            this.authService.setLoggedIn(true);
             this.router.navigate(['/']);
+            toast.message = '¡Sesión iniciada!';
           },
-          (error) => {
-            console.error('Error al iniciar sesión después del registro:', error);
-          }
-        );
+          (error: HttpErrorResponse) => {
+            toast.message = 'Error al iniciar sesión, ' + error.error;
+          });
+    
+          toast.present();
       },
       async (error) => {
         console.error('Error al registrar:', error);
@@ -83,3 +83,4 @@ export class RegisterPage implements OnInit {
     );
   }
 }
+

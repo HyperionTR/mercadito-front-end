@@ -54,7 +54,7 @@ export class OrderCardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.currentUser$().subscribe(user => {
+    this.authService.currentUser$(true).subscribe(user => {
       if ( user ) 
         this.currentUser = user;
     });

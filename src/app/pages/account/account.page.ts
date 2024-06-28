@@ -81,7 +81,7 @@ export class AccountPage implements OnInit {
   }
 
   loadEverything() {
-    this.authService.currentUser$().subscribe(user => {
+    this.authService.currentUser$(true).subscribe(user => {
       if (user) {
         this.isSeller = user.tipo_de_usuario === 'vendedor';
         console.log('ionView: isSeller:', this.isSeller);

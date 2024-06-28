@@ -26,14 +26,14 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.checkLoggedIn();
+    // this.checkLoggedIn();
     // this.loadData(null);
 
     this.authService.isLoggedIn$().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
 
-    this.authService.currentUser$().subscribe(currentUser => {
+    this.authService.currentUser$(false).subscribe(currentUser => {
       this.currentUser = currentUser;
       console.log(this.currentUser);
     });

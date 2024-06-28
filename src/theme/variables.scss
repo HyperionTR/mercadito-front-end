@@ -2,8 +2,8 @@
 @media (min-width: 768px) { 
 	ion-app {
 	  // Establece el ancho máximo de la aplicación
-	  max-width: 400px; // Ajusta este valor al ancho deseado
-  
+	  min-width: 400px; // Ajusta este valor al ancho deseado
+	  max-width: 30%; // Ajusta este valor al ancho deseado
 	  // Centra la aplicación horizontalmente
 	  margin: 0 auto;
   

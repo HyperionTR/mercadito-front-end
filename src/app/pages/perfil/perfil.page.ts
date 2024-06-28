@@ -5,6 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { ToastController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
 import { AlertController } from '@ionic/angular';
+import { HttpResponse } from '@capacitor/core';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +15,7 @@ import { AlertController } from '@ionic/angular';
 export class PerfilPage implements OnInit {
   isLoggedIn: boolean = false;
   currentUser: User | null = null;
-  newUserType: string = this.currentUser?.tipo_de_usuario === 'vendedor' ? 'comprador' : 'vendedor';
+  newUserType: string = '';
 
   constructor(
     private router: Router,
@@ -25,24 +26,12 @@ export class PerfilPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.checkLoggedIn();
-
-    this.authService.isLoggedIn$().subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-    });
-
-    this.authService.currentUser$().subscribe(currentUser => {
+    this.authService.currentUser$(false).subscribe(currentUser => {
       this.currentUser = currentUser;
+      this.isLoggedIn = this.currentUser !== null;
+      this.newUserType= this.currentUser?.tipo_de_usuario === 'vendedor' ? 'comprador' : 'vendedor';
       console.log(this.currentUser);
     });
-  }
-
-  checkLoggedIn() {
-    const currentUserString = localStorage.getItem('currentUser');
-    if (currentUserString !== null) {
-      this.authService.setCurrentUser(JSON.parse(currentUserString));
-      this.authService.setLoggedIn(true);
-    }
   }
 
   async updateUserType() {
@@ -61,13 +50,12 @@ export class PerfilPage implements OnInit {
 
     const alert = await this.alertController.create({
       header: 'Cambiar tipo de usuario',
+      subHeader: (this.newUserType === 'comprador' ? '¡Se eliminaran todos tus productos!' : ''),
       message: this.newUserType === 'comprador' ? `
-        ¿Estás seguro que deseas cambiar tu tipo de usuario a ${this.newUserType}?
+        ¿Estás seguro que deseas cambiar tu tipo de usuario a ${this.newUserType}?. 
+        Al volverte comprador, todos tus productos se eliminaran permanentemente.
       ` : `
-        ¿Estás seguro que deseas cambiar tu tipo de usuario a ${this.newUserType}? <br>
-        Al cambiar tu tipo de usuario, perderás todos los productos que hayas publicado.
-
-        <strong>Esta acción no es reversible</strong>
+        ¿Estás seguro que deseas cambiar tu tipo de usuario a ${this.newUserType}?
       `,
       buttons: [
         {
@@ -78,9 +66,9 @@ export class PerfilPage implements OnInit {
           text: 'Aceptar',
           role: 'confirm',
           cssClass: 'danger',
-          handler: () => {
-            this.apiService.updateUserType( this.currentUser!, this.newUserType ).subscribe(
-              async (response) => {
+          handler: (alertData) => {
+            this.apiService.updateUserType( this.newUserType, alertData.password ).subscribe(
+              async (response: string) => {
                 const toast = await this.toastController.create({
                   message: response,
                   duration: 2000,
@@ -88,11 +76,10 @@ export class PerfilPage implements OnInit {
                 });
                 toast.present();
                 this.onLogout();
-              },
-              async (error) => {
+              }, async (error) => {
                 console.error('Error al cambiar tipo de usuario:', error);
                 const toast = await this.toastController.create({
-                  message: error.error,
+                  message: 'Error al cambiar tipo de usuario: ' + error.error,
                   duration: 2000,
                   position: 'top'
                 });
@@ -101,7 +88,13 @@ export class PerfilPage implements OnInit {
             );
           }
         }
-      ]
+      ],
+      inputs: [{
+        name: 'password',
+        type: 'password',
+        placeholder: 'Contraseña',
+        value: '',
+      }]
     });
 
     await alert.present();
